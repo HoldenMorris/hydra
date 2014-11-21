@@ -1,0 +1,50 @@
+#kbd {
+  /*display: none;*/
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0;
+  text-transform: lowercase;
+  position: absolute;
+  bottom: 0;
+}
+
+#kbd.caps {
+  text-transform: uppercase !important;
+}
+
+#kbd td > span:first-child {
+  display: inline;
+}
+
+#kbd td > span:last-child {
+  display: none;
+}
+
+#kbd.ctrl td > span:first-child {
+  display: none !important;
+}
+
+#kbd.ctrl td > span:last-child {
+  display: inline !important;
+}
+
+#kbd td {
+  border: 1px solid #008000;
+  padding: 8px 0;
+  text-align: center;
+  width: 10%;
+}
+
+#kbd td[data-c] {
+  color: lightgreen;
+}
+
+#kbd td.dn {
+  background-color: white;
+}
+
+#kbd td:hover {
+  background-color: green;
+  color: black;
+  cursor: pointer;
+}

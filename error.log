@@ -1,0 +1,2 @@
+[Tue Nov 18 07:08:22.364550 2014] [:error] [pid 29598] [client 127.0.0.1:58942] HTTP 404 (GET /favicon.ico)
+[Tue Nov 18 07:08:22.364935 2014] [:error] [pid 29598] [client 127.0.0.1:58942] - index.php:42 Base->run()

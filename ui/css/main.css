@@ -1,0 +1,177 @@
+/**
+ * Hydra Main CSS
+ * --------------
+ */
+
+html, body {
+  position:fixed !important;
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+}
+
+body {
+  background-color: #000;
+  color: green;
+  font-family: monospace;
+}
+
+#container {
+  width: 640px;
+  height: 100%;
+  position: relative;
+  margin: auto;
+}
+
+#content {
+  padding: 0 5px;
+}
+
+#header {
+  background: url("/img/hydra.gif") right top no-repeat;
+}
+#header h1 {
+  padding: 60px 0px 150px;
+  margin-top: 0;
+}
+
+#prompt {
+  margin-left: 10px
+}
+
+input {
+  border: 0;
+  background: black;
+  color: green;
+  font-family: monospace;
+  font-size: xx-large;
+  margin: 0 10px;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.blink {
+  -webkit-animation: blink 1s infinite steps(1, start);
+  -moz-animation: blink 1s infinite steps(1, start);
+  -ms-animation: blink 1s infinite steps(1, start);
+  animation: blink 1s infinite steps(1, start);
+}
+
+@keyframes blink {
+  0%, 100% {
+    background-color: green;
+    color: green;
+  }
+  50% {
+    background-color: black; /* not green because it's seem there is Google Chrome bug */
+    color: green;
+  }
+}
+
+@-webkit-keyframes blink {
+  0%, 100% {
+    background-color: green;
+    color: green;
+  }
+  50% {
+    background-color: black;
+    color: green;
+  }
+}
+
+@-ms-keyframes blink {
+  0%, 100% {
+    background-color: green;
+    color: green;
+  }
+  50% {
+    background-color: black;
+    color: green;
+  }
+}
+
+@-moz-keyframes blink {
+  0%, 100% {
+    background-color: green;
+    color: green;
+  }
+  50% {
+    background-color: black;
+    color: green;
+  }
+}
+
+
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  #container {
+    width: 100%;
+  }
+  #header {
+    background: url("/img/hydra-s.gif") top right no-repeat;
+  }
+  #header h1 {
+    padding: 10px 0px 15px
+  }
+  #kbd {
+    display: table;
+    background-color: #313100;
+    height: 30%;
+  }
+  #kbd td {
+    font-size: 20px;
+  }
+}
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape) {
+  #container {
+    width: 100%;
+  }
+  #header {
+    background: none;
+  }
+  #header h1 {
+    padding: 5px;
+  }
+  #kbd {
+    display: table;
+    background-color: #440000;
+    height: 50%;
+  }
+  #kbd td {
+    font-size: 20px;
+  }
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+  /* some CSS here */
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+  /* some CSS here */
+  body {
+  }
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+  /* some CSS here */
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+  /* some CSS here */
+}
+
+@media screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2){
+  body {
+  }
+}

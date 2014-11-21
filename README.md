@@ -1,4 +1,4 @@
-hydra
-=====
+HYDRA Terminal
+--------------
 
-Mobile Terminal Webapp
+Info here!
