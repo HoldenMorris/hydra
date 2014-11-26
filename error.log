@@ -1,2 +1,27 @@
 [Tue Nov 18 07:08:22.364550 2014] [:error] [pid 29598] [client 127.0.0.1:58942] HTTP 404 (GET /favicon.ico)
 [Tue Nov 18 07:08:22.364935 2014] [:error] [pid 29598] [client 127.0.0.1:58942] - index.php:42 Base->run()
+[Wed Nov 26 09:56:57.811291 2014] [:error] [pid 24735] [client 127.0.0.1:35496] sha1() expects parameter 1 to be string, array given
+[Wed Nov 26 09:56:57.874068 2014] [:error] [pid 24735] [client 127.0.0.1:35496] - ui/content.htm:5 View->render()
+[Wed Nov 26 09:56:57.874415 2014] [:error] [pid 24735] [client 127.0.0.1:35496] - ui/layout.htm:27 View->render()
+[Wed Nov 26 09:56:57.874593 2014] [:error] [pid 24735] [client 127.0.0.1:35496] - index.php:19 View->render()
+[Wed Nov 26 09:56:57.874737 2014] [:error] [pid 24735] [client 127.0.0.1:35496] - index.php:45 Base->run()
+[Wed Nov 26 09:57:43.305845 2014] [:error] [pid 24772] [client 127.0.0.1:35502] Unable to open 0
+[Wed Nov 26 09:57:43.306218 2014] [:error] [pid 24772] [client 127.0.0.1:35502] - ui/content.htm:5 View->render()
+[Wed Nov 26 09:57:43.306467 2014] [:error] [pid 24772] [client 127.0.0.1:35502] - ui/layout.htm:27 View->render()
+[Wed Nov 26 09:57:43.306632 2014] [:error] [pid 24772] [client 127.0.0.1:35502] - index.php:19 View->render()
+[Wed Nov 26 09:57:43.306774 2014] [:error] [pid 24772] [client 127.0.0.1:35502] - index.php:45 Base->run()
+[Wed Nov 26 09:58:13.884807 2014] [:error] [pid 2601] [client 127.0.0.1:35509] Unable to open 1
+[Wed Nov 26 09:58:13.884976 2014] [:error] [pid 2601] [client 127.0.0.1:35509] - ui/content.htm:5 View->render()
+[Wed Nov 26 09:58:13.885087 2014] [:error] [pid 2601] [client 127.0.0.1:35509] - ui/layout.htm:27 View->render()
+[Wed Nov 26 09:58:13.885160 2014] [:error] [pid 2601] [client 127.0.0.1:35509] - index.php:19 View->render()
+[Wed Nov 26 09:58:13.885229 2014] [:error] [pid 2601] [client 127.0.0.1:35509] - index.php:45 Base->run()
+[Wed Nov 26 09:58:57.584317 2014] [:error] [pid 2601] [client 127.0.0.1:35523] Array to string conversion
+[Wed Nov 26 09:58:57.584514 2014] [:error] [pid 2601] [client 127.0.0.1:35523] - ui/content.htm:5 Base->{closure}()
+[Wed Nov 26 09:58:57.584650 2014] [:error] [pid 2601] [client 127.0.0.1:35523] - ui/layout.htm:27 View->render()
+[Wed Nov 26 09:58:57.584758 2014] [:error] [pid 2601] [client 127.0.0.1:35523] - index.php:19 View->render()
+[Wed Nov 26 09:58:57.584847 2014] [:error] [pid 2601] [client 127.0.0.1:35523] - index.php:45 Base->run()
+[Wed Nov 26 10:03:09.983444 2014] [:error] [pid 24773] [client 127.0.0.1:35588] Invalid hive key '$ast_update'
+[Wed Nov 26 10:03:09.983865 2014] [:error] [pid 24773] [client 127.0.0.1:35588] - ui/content.htm:6 Base->get()
+[Wed Nov 26 10:03:09.984147 2014] [:error] [pid 24773] [client 127.0.0.1:35588] - ui/layout.htm:27 View->render()
+[Wed Nov 26 10:03:09.984333 2014] [:error] [pid 24773] [client 127.0.0.1:35588] - index.php:21 View->render()
+[Wed Nov 26 10:03:09.984490 2014] [:error] [pid 24773] [client 127.0.0.1:35588] - index.php:47 Base->run()

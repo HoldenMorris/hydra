@@ -25,6 +25,11 @@ body {
   margin: auto;
 }
 
+#out {
+  margin-bottom: 10px;
+  color: #9BC89B;
+}
+
 #content {
   padding: 0 5px;
 }

@@ -13,6 +13,11 @@ $f3->route('GET /',
   function ($f3) {
     $f3->set('content', 'content.htm');
     $f3->set('kbd', 'kbd.htm');
+    $version_number = 0;
+    exec('git rev-list HEAD | wc -l',$version_number);
+    $f3->set('version','0.1.'.$version_number[0]);
+    exec("git log -1 --pretty=format:'%ci'",$last_update);
+    $f3->set('last_update',$last_update[0]);
     echo View::instance()->render('layout.htm');
   }
 );
