@@ -33,3 +33,5 @@
 [Tue Dec 02 08:33:01.489769 2014] [:error] [pid 22641] [client 127.0.0.1:51337] Fatal error: syntax error, unexpected '?', referer: http://l-www.hydra.com/
 [Tue Dec 02 08:33:03.180927 2014] [:error] [pid 24812] [client 127.0.0.1:51339] PHP Parse error:  syntax error, unexpected '?' in /home/holdenm/workspace/hydra/ui/layout.htm on line 21, referer: http://l-www.hydra.com/
 [Tue Dec 02 08:33:03.181442 2014] [:error] [pid 24812] [client 127.0.0.1:51339] Fatal error: syntax error, unexpected '?', referer: http://l-www.hydra.com/
+[Tue Dec 02 10:40:52.151646 2014] [:error] [pid 22638] [client 127.0.0.1:60126] HTTP 404 (POST /ajax/test.html), referer: http://l-www.hydra.com/
+[Tue Dec 02 10:40:52.151855 2014] [:error] [pid 22638] [client 127.0.0.1:60126] - index.php:55 Base->run(), referer: http://l-www.hydra.com/

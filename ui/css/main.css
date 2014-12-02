@@ -27,7 +27,7 @@ body {
 
 #out {
   color: #9BC89B;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 #out p {
   margin: 2px;

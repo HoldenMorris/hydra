@@ -2,7 +2,7 @@
  * Hydra Main App
  * --------------
  */
-var caps = true, ctrl = false;
+var caps = false, shift = false, ctrl = false;
 var snd = new Audio("/ui/snd/click.wav");
 
 $(document).ready(function () {
@@ -10,46 +10,59 @@ $(document).ready(function () {
   offset = $('#kbd').offset();
   $('#out').css('max-height',(offset.top-75));
 
-  function prompt(keyCode, char) {
+  function prompt(shiftKey, ctrlKey, keyCode, char) {
+
+    console.log( 'caps: '+caps+' shift: '+shiftKey+' ctrl: '+ctrlKey+' keyCode: '+keyCode+' char: '+char );
+
     if (keyCode !== -1) {
-      char = String.fromCharCode(keyCode);
+      if(keyCode>=32 && keyCode<=126){
+        char = String.fromCharCode(keyCode);
+      } else {
+        char = '';
+      }
     }
     var $p = $('#prompt'),
-      $pt = $p.text();
-    if (keyCode == 17) {
-      ctrl = !ctrl;
-      $('#kbd').toggleClass('ctrl');
-    } else if (keyCode === 16 || keyCode === 20) {
-      caps = !caps;
-      $('#kbd').toggleClass('caps');
-    } else if (keyCode == 8) {
-     $pt = $pt.slice(0, -1);
-    } else if (keyCode == 13) {
-      switch($pt.toLowerCase()) {
-          case 'loc':
-            getGPSLocation(function(pos,err){
-              if(err){
-                $('#out').append('<p>'+err+'</p>');
-              } else {
-                $('#out').append('<p>Latitude: '+pos.coords.latitude +'<br/>Longitude: ' +pos.coords.longitude+'</p>');
-              }
-            });
-            break;
-          case 'clr':
-            $('#out').html('');
-            break;
-          default:
-            $('#out').append('<p>'+$pt+'</p>');
-      }
-      var out = $('#out');
-      var height = out[0].scrollHeight;
-      out.scrollTop(height);
-      $pt = '';
-    } else {
-      $pt = $pt + (caps ? char : char.toLowerCase());
+        inp = $p.text();
+    switch(keyCode) {
+      case 8:
+        inp = inp.slice(0, -1);
+        break;
+      case 13:
+        switch(inp.toLowerCase()) {
+            case 'loc':
+              getGPSLocation(function(pos,err){
+                if(err){
+                  $('#out').append('<p>'+err+'</p>');
+                } else {
+                  $('#out').append('<p>Latitude: '+pos.coords.latitude +'<br/>Longitude: ' +pos.coords.longitude+'</p>');
+                }
+              });
+              break;
+            case 'clr':
+              $('#out').html('');
+              break;
+            default:
+              $.post( "api", {cmd:inp}, function( data ) {
+                $('#out').append('<p>'+data.msg+'</p>');
+              });
+        }
+        var out = $('#out');
+        var height = out[0].scrollHeight;
+        out.scrollTop(height);
+        inp = '';
+        break;
+      case 17:
+        ctrl = !ctrl;
+        $('#kbd').toggleClass('ctrl');
+        break;
+      case 20:
+        caps = !caps;
+        $('#kbd').toggleClass('caps');
+        break;
+      default:
+        inp = inp + (caps||shiftKey ? char : char.toLowerCase());
     }
-    //console.log('caps: ' + caps + ' code: ' + keyCode + ' char: [' + char + ']');
-    $p.text($pt);
+    $p.text(inp);
   }
 
   $(document)
@@ -63,10 +76,17 @@ $(document).ready(function () {
       return false;
     })
     .on("keyup", function (e) {
-      prompt(e.keyCode);
+      console.log('keyup');
+      var keyCode = e.keyCode ? e.keyCode : e.which;
+      var shiftKey = e.shiftKey ? e.shiftKey : ((keyCode == 16) ? true : false);
+      var ctrlKey = e.ctrlKey ? e.ctrlKey : ((keyCode == 20) ? true : false);
+      //caps = ( ( ( keyCode >= 65 && keyCode <= 90 ) && !shiftKey ) || ( ( keyCode >= 97 && keyCode <= 122 ) && shiftKey ) );
+      prompt( shiftKey, ctrlKey, keyCode);
       e.preventDefault();
       return false;
   });
+
+
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
       snd.play();
@@ -86,7 +106,13 @@ $(document).ready(function () {
         t = (!ctrl ? $('span:first', $k).text() : $('span:last', $k).text());
       if (c === undefined) c = -1;
       $k.removeClass('dn');
-      prompt(c, t);
+      prompt( shift, ctrl, c, t);
       return false;
     });
+
+//  ke = jQuery.Event("keyup");
+//  ke.which = 88; // key value of x
+//  console.log(ke);
+//  $(document).trigger(ke);
+
 });

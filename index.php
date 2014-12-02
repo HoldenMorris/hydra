@@ -44,4 +44,20 @@ $f3->route('GET /minify/@type',
   3600 * 24
 );
 
+$f3->route('POST /api [ajax]',
+    function($f3) {
+      $cmd = trim(strtolower($f3->get('POST.cmd')));
+      switch ($cmd){
+        case 'help':
+          $response = 'Help is at hand!';
+          break;
+        default:
+          $response = $cmd.': command not found';
+      }
+      $json = array('msg'=>$response);
+      $f3->set('json',json_encode($json));
+      echo View::instance()->render('json.htm', 'application/json', NULL, 0 ); // cache for 0 seconds
+    }
+);
+
 $f3->run();
