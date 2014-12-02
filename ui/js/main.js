@@ -59,7 +59,7 @@ $(document).ready(function () {
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
       e.preventDefault();
-      e.stopImmediatePropagation();
+      if(typeof e != "undefined") e.stopImmediatePropagation();
       $(this).addClass('dn')
     })
     .on('touchend touchcancel mouseup', function (e) {
