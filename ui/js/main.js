@@ -3,11 +3,12 @@
  * --------------
  */
 var caps = true, ctrl = false;
-
+var snd = new Audio("/ui/snd/click.mp3");
 
 $(document).ready(function () {
 
   function prompt(keyCode, char) {
+    snd.play();
     if (keyCode !== -1) {
       char = String.fromCharCode(keyCode);
     }
@@ -59,13 +60,15 @@ $(document).ready(function () {
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
       if(typeof e != "undefined"){
-        e.preventDefault().stopImmediatePropagation();
+        e.preventDefault();
+        e.stopImmediatePropagation();
       }
       $(this).addClass('dn')
     })
     .on('touchend touchcancel mouseup', function (e) {
       if(typeof e != "undefined"){
-        e.preventDefault().stopImmediatePropagation();
+        e.preventDefault();
+        e.stopImmediatePropagation();
       }
       var $k = $(this),
         c = $k.data('c'),
