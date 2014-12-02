@@ -28,6 +28,11 @@ body {
 #out {
   margin-bottom: 10px;
   color: #9BC89B;
+  overflow-y: scroll;
+  max-height: 110px;
+}
+#out p {
+  margin: 2px;
 }
 
 #content {

@@ -3,12 +3,11 @@
  * --------------
  */
 var caps = true, ctrl = false;
-var snd = new Audio("/ui/snd/click.mp3");
+var snd = new Audio("/ui/snd/click.wav");
 
 $(document).ready(function () {
 
   function prompt(keyCode, char) {
-    snd.play();
     if (keyCode !== -1) {
       char = String.fromCharCode(keyCode);
     }
@@ -23,7 +22,6 @@ $(document).ready(function () {
     } else if (keyCode == 8) {
      $pt = $pt.slice(0, -1);
     } else if (keyCode == 13) {
-      console.log($pt);
       switch($pt.toLowerCase()) {
           case 'loc':
             getGPSLocation();
@@ -34,12 +32,16 @@ $(document).ready(function () {
           default:
             $('#out').append('<p>'+$pt+'</p>');
       }
+      var out = $('#out');
+      var height = out[0].scrollHeight;
+      out.scrollTop(height);
       $pt = '';
     } else {
       $pt = $pt + (caps ? char : char.toLowerCase());
     }
     console.log('caps: ' + caps + ' code: ' + keyCode + ' char: [' + char + ']');
     $p.text($pt);
+    snd.play();
   }
 
   $(document)
