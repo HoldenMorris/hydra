@@ -58,13 +58,15 @@ $(document).ready(function () {
   });
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
-      e.preventDefault();
-      if(typeof e != "undefined") e.stopImmediatePropagation();
+      if(typeof e != "undefined"){
+        e.preventDefault().stopImmediatePropagation();
+      }
       $(this).addClass('dn')
     })
     .on('touchend touchcancel mouseup', function (e) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
+      if(typeof e != "undefined"){
+        e.preventDefault().stopImmediatePropagation();
+      }
       var $k = $(this),
         c = $k.data('c'),
         t = (!ctrl ? $('span:first', $k).text() : $('span:last', $k).text());
