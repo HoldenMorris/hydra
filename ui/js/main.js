@@ -3,7 +3,10 @@
  * --------------
  */
 var caps = false, shift = false, ctrl = false;
-var snd = new Audio("/ui/snd/click.wav");
+
+var snd = new Howl({
+  urls: ['/ui/snd/click.mp3']
+});
 
 $(document).ready(function () {
 
