@@ -7,6 +7,9 @@ var snd = new Audio("/ui/snd/click.wav");
 
 $(document).ready(function () {
 
+  offset = $('#kbd').offset();
+  $('#out').css('max-height',(offset.top-75));
+
   function prompt(keyCode, char) {
     if (keyCode !== -1) {
       char = String.fromCharCode(keyCode);
@@ -24,7 +27,13 @@ $(document).ready(function () {
     } else if (keyCode == 13) {
       switch($pt.toLowerCase()) {
           case 'loc':
-            getGPSLocation();
+            getGPSLocation(function(pos,err){
+              if(err){
+                $('#out').append('<p>'+err+'</p>');
+              } else {
+                $('#out').append('<p>Latitude: '+pos.coords.latitude +'<br/>Longitude: ' +pos.coords.longitude+'</p>');
+              }
+            });
             break;
           case 'clr':
             $('#out').html('');
@@ -39,9 +48,8 @@ $(document).ready(function () {
     } else {
       $pt = $pt + (caps ? char : char.toLowerCase());
     }
-    console.log('caps: ' + caps + ' code: ' + keyCode + ' char: [' + char + ']');
+    //console.log('caps: ' + caps + ' code: ' + keyCode + ' char: [' + char + ']');
     $p.text($pt);
-    snd.play();
   }
 
   $(document)
@@ -61,6 +69,7 @@ $(document).ready(function () {
   });
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
+      snd.play();
       if(typeof e != "undefined"){
         e.preventDefault();
         e.stopImmediatePropagation();
