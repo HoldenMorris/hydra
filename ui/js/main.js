@@ -23,10 +23,15 @@ $(document).ready(function () {
      $pt = $pt.slice(0, -1);
     } else if (keyCode == 13) {
       console.log($pt);
-      if($pt.toLowerCase()=='loc'){
-        getGPSLocation();
-      } else {
-        $('#out').html('');
+      switch($pt.toLowerCase()) {
+          case 'loc':
+            getGPSLocation();
+            break;
+          case 'clr':
+            $('#out').html('');
+            break;
+          default:
+            $('#out').append('<p>'+$pt+'</p>');
       }
       $pt = '';
     } else {
@@ -53,11 +58,13 @@ $(document).ready(function () {
   });
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
-      e.preventDefault().stopImmediatePropagation();
+      e.preventDefault();
+      e.stopImmediatePropagation();
       $(this).addClass('dn')
     })
     .on('touchend touchcancel mouseup', function (e) {
       e.preventDefault();
+      e.stopImmediatePropagation();
       var $k = $(this),
         c = $k.data('c'),
         t = (!ctrl ? $('span:first', $k).text() : $('span:last', $k).text());

@@ -23,6 +23,7 @@ function showGPSPosition(position) {
    coords.speed             The speed in meters per second
    timestamp                The date/time of the response
    */
+  console.log(position);
   $('#out').html("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
 }
 
