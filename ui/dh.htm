@@ -38,6 +38,7 @@
       width: 100%;
       margin: 0;
       padding: 5px;
+      font-size: large;
     }
     #nav {
       position: fixed;
@@ -50,14 +51,19 @@
     }
     #nav li {
       float: left;
-      margin-right: 5px;
+      margin-left: -1px;
       background-color: #008000;
-      width: 55px;
+      width: 20%;
       height: 55px;
       text-align: center;
       font-size: 24px;
       font-family: sans-serif;
       color: #90EE90;
+      border-left: 1px solid;
+      line-height: 55px
+    }
+    #nav li:active {
+      background-color: #808080;
     }
   </style>
   <script type="text/javascript" src="/minify/js?files=bigint.js,jquery.min.js,xxtea.js,md5.min.js,file.js,dh.js&_=<?php echo Base::instance()->get('version'); ?>"></script>

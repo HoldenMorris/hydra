@@ -39,13 +39,15 @@ $(document).ready(function () {
   });
 
   $('#lsSet').click(function(){
-    if(typeof(Storage) !== "undefined") {
+    if(confirm('You sure?')){
       var regex = '.{1,32}(\\s|$)|.{32}|.+$';
       private_key = rnd(256).match( RegExp(regex, 'g') ).join('\n');
-      localStorage.setItem("private_key",private_key);
-      private_key = localStorage.getItem("private_key");
+      if(typeof(Storage) !== "undefined") {
+        localStorage.setItem("private_key",private_key);
+        private_key = localStorage.getItem("private_key");
+      }
+      $('#out').append('Set private key:\n'+private_key+'\n');
     }
-    $('#out').append('Set private key:\n'+private_key+'\n');
   });
 
   $('#lsExp').click(function(){
@@ -73,11 +75,11 @@ $(document).ready(function () {
         var str = "Hello Client! 你好，中国！",
             encrypt_data = xxtea.encrypt(xxtea.toBytes(str), xxtea.toBytes(b_sec)),
             send = (btoa(String.fromCharCode.apply(String, encrypt_data)));
-        $('#out').append('send: ' + str + '\n');
+        $('#out').append('tx: ' + str + '\n');
         $.post("xxtea", {data: send}, function (reply) {
           reply = cvrt(reply);
           var decrypt_data = xxtea.toString(xxtea.decrypt(reply, xxtea.toBytes(b_sec)));
-          $('#out').append('reply: ' + decrypt_data + '\n')
+          $('#out').append('rx: ' + decrypt_data + '\n')
         })
       } else {
         $('#out').append('DH fail')
