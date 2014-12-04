@@ -51,7 +51,7 @@ $f3->route('POST /xxtea [ajax]',
       new Session();
       $a_sec = $f3->get('SESSION.a_sec');
       $data = base64_decode($f3->get('POST.data'));
-      $decrypt_data = xxtea_decrypt($data, $a_sec).' -> Reply';
+      $decrypt_data = xxtea_decrypt($data, $a_sec).'- rx';
       $encrypt_data = xxtea_encrypt($decrypt_data, $a_sec);
       echo base64_encode($encrypt_data);
     }

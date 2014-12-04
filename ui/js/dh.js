@@ -35,7 +35,7 @@ $(document).ready(function () {
     } else {
       private_key = 'Sorry! No Web Storage support..';
     }
-    $('#out').append('Get private key:\n'+private_key+'\n');
+    $('#out').append('Get private key:\n'+private_key+'\n\n');
   });
 
   $('#lsSet').click(function(){
@@ -46,14 +46,14 @@ $(document).ready(function () {
         localStorage.setItem("private_key",private_key);
         private_key = localStorage.getItem("private_key");
       }
-      $('#out').append('Set private key:\n'+private_key+'\n');
+      $('#out').append('Set private key:\n'+private_key+'\n\n');
     }
   });
 
   $('#lsExp').click(function(){
     private_key = '# Hydra Terminal Private Key\n# Exported: '+new Date().getTime()+'\n\n'+private_key;
     saveFile('private.key',private_key);
-    $('#out').append('Exp private key:\n'+private_key+'\n');
+    $('#out').append('Exp private key:\n'+private_key+'\n\n');
   });
 
   $('#lsInp').change(function(e){
@@ -64,7 +64,7 @@ $(document).ready(function () {
         var save = private_key.replace(re, '').replace(/[\n\r]+$/, '');
         localStorage.setItem("private_key",save);
       }
-      $('#out').append('Inp private key:\n'+private_key+'\n');
+      $('#out').append('Inp private key:\n'+private_key+'\n\n');
     });
     return false;
   });
@@ -79,7 +79,7 @@ $(document).ready(function () {
         $.post("xxtea", {data: send}, function (reply) {
           reply = cvrt(reply);
           var decrypt_data = xxtea.toString(xxtea.decrypt(reply, xxtea.toBytes(b_sec)));
-          $('#out').append('rx: ' + decrypt_data + '\n')
+          $('#out').append('rx: ' + decrypt_data + '\n\n')
         })
       } else {
         $('#out').append('DH fail')
