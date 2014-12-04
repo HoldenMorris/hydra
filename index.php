@@ -6,16 +6,16 @@ if ((float)PCRE_VERSION < 7.9)
   trigger_error('PCRE version is out of date');
 
 $f3->config('config.ini');
+$version_number = 0;
+exec('git rev-list HEAD | wc -l',$version_number);
+$f3->set('version','0.2.'.$version_number[0].'.'.microtime());
+exec("git log -1 --pretty=format:'%ci'",$last_update);
+$f3->set('last_update',$last_update[0]);
 
 $f3->route('GET /',
   function ($f3) {
     $f3->set('content', 'content.htm');
     $f3->set('kbd', 'kbd.htm');
-    $version_number = 0;
-    exec('git rev-list HEAD | wc -l',$version_number);
-    $f3->set('version','0.2.'.$version_number[0].'.'.microtime());
-    exec("git log -1 --pretty=format:'%ci'",$last_update);
-    $f3->set('last_update',$last_update[0]);
     echo View::instance()->render('layout.htm');
   }
 );
@@ -27,7 +27,7 @@ $f3->route('GET /dh',
       $f3->set('dh_gen', strtoupper($dh_obj['gen']));
       $f3->set('dh_mod', strtoupper($dh_obj['mod']));
       $f3->set('dh_A',   strtoupper($dh_obj['msg']));
-      $f3->set('dh_rnd', strtoupper(getSecureRandomDH(16)));
+      $f3->set('dh_rnd', getSecureRandomDH(128));
       new Session();
       $f3->set('SESSION.dh_obj',json_encode($dh_obj));
       echo View::instance()->render('dh.htm');
@@ -73,6 +73,9 @@ $f3->route('GET /minify/@type',
   3600 * 24
 );
 
+/**
+ * Process api commands
+ */
 $f3->route('POST /api [ajax]',
     function($f3) {
       $cmd = trim(strtolower($f3->get('POST.cmd')));

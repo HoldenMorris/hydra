@@ -33,6 +33,7 @@ $(document).ready(function () {
       case 13:
         switch(inp.toLowerCase()) {
             case 'loc':
+              $('#out').append('<p>Getting GPS data...</p>');
               getGPSLocation(function(pos,err){
                 if(err){
                   $('#out').append('<p>'+err+'</p>');

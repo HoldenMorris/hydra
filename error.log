@@ -145,3 +145,17 @@
 [Wed Dec 03 17:58:06.355403 2014] [:error] [pid 8101] [client 127.0.0.1:34679] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init(), referer: http://l-www.hydra.com/dh
 [Wed Dec 03 17:58:06.355482 2014] [:error] [pid 8101] [client 127.0.0.1:34679] - index.php:42 calcDiffieHellmanSecret(), referer: http://l-www.hydra.com/dh
 [Wed Dec 03 17:58:06.355542 2014] [:error] [pid 8101] [client 127.0.0.1:34679] - index.php:92 Base->run(), referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:15:15.064459 2014] [:error] [pid 22596] [client 127.0.0.1:50337] HTTP 404 (GET /favicon.ico)
+[Thu Dec 04 09:15:15.064812 2014] [:error] [pid 22596] [client 127.0.0.1:50337] - index.php:95 Base->run()
+[Thu Dec 04 09:28:25.080839 2014] [:error] [pid 22606] [client 127.0.0.1:50472] gmp_init(): Unable to convert variable to GMP - wrong type, referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:28:25.081220 2014] [:error] [pid 22606] [client 127.0.0.1:50472] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init(), referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:28:25.081663 2014] [:error] [pid 22606] [client 127.0.0.1:50472] - index.php:42 calcDiffieHellmanSecret(), referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:28:25.081824 2014] [:error] [pid 22606] [client 127.0.0.1:50472] - index.php:95 Base->run(), referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:33:18.919023 2014] [:error] [pid 2601] [client 127.0.0.1:50497] gmp_init(): Unable to convert variable to GMP - wrong type, referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:33:18.919378 2014] [:error] [pid 2601] [client 127.0.0.1:50497] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init(), referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:33:18.919732 2014] [:error] [pid 2601] [client 127.0.0.1:50497] - index.php:42 calcDiffieHellmanSecret(), referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:33:18.919890 2014] [:error] [pid 2601] [client 127.0.0.1:50497] - index.php:95 Base->run(), referer: http://l-www.hydra.com/dh
+[Thu Dec 04 09:33:58.037956 2014] [:error] [pid 2601] [client 127.0.0.1:50505] gmp_init(): Unable to convert variable to GMP - wrong type
+[Thu Dec 04 09:33:58.038269 2014] [:error] [pid 2601] [client 127.0.0.1:50505] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init()
+[Thu Dec 04 09:33:58.038528 2014] [:error] [pid 2601] [client 127.0.0.1:50505] - index.php:42 calcDiffieHellmanSecret()
+[Thu Dec 04 09:33:58.038682 2014] [:error] [pid 2601] [client 127.0.0.1:50505] - index.php:95 Base->run()

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <script type="text/javascript" src="/minify/js?files=bigint.js,jquery.min.js,xxtea.js,dh.js&_=<?php echo Base::instance()->get('version'); ?>"></script>
+  <script type="text/javascript" src="/minify/js?files=bigint.js,jquery.min.js,xxtea.js,spark-md5.min.js,file.js,dh.js&_=<?php echo Base::instance()->get('version'); ?>"></script>
   <script>
     var dh = {
       A:"<?php echo Base::instance()->get('dh_A'); ?>",
@@ -13,6 +13,15 @@
   </script>
 </head>
 <body>
-<pre id="out"></pre>
+
+  <pre id="out"></pre>
+
+  <input id="dh" type="button" value="Test DH"/><br/>
+
+  <input id="lsSet" type="button" value="SET KEY"/><br/>
+  <input id="lsGet" type="button" value="GET KEY"/><br/>
+  <input id="lsExp" type="button" value="EXP KEY"/><br/>
+  <input id="lsInp" type="file"   value="INP KEY"/><br/>
+
 </body>
 </html>
