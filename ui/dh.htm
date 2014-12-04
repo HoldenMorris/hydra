@@ -1,8 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <script type="text/javascript" src="/minify/js?files=bigint.js,jquery.min.js,xxtea.js,spark-md5.min.js,file.js,dh.js&_=<?php echo Base::instance()->get('version'); ?>"></script>
+  <title>HYDRA</title>
+  <base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
+  <meta charset="<?php echo $ENCODING; ?>" />
+  <meta name="description" content="A new user interface for all." />
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="SecureMail" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <style>
+    body {
+      position: relative;
+      top: 0;
+      left: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+    }
+    button {
+      padding: 20px 5px;
+      margin: 5px;
+      width: 16%;
+    }
+    #out {
+      background-color: #000;
+      color: #008000;
+      word-break: break-word;
+      height: 85%;
+      overflow-x: auto;
+      position: fixed;
+      width: 100%;
+      margin: 0;
+      padding: 5px;
+    }
+    #nav {
+      position: fixed;
+      bottom: 0;
+    }
+  </style>
+  <script type="text/javascript" src="/minify/js?files=bigint.js,jquery.min.js,xxtea.js,md5.min.js,file.js,dh.js&_=<?php echo Base::instance()->get('version'); ?>"></script>
   <script>
     var dh = {
       A:"<?php echo Base::instance()->get('dh_A'); ?>",
@@ -16,12 +57,15 @@
 
   <pre id="out"></pre>
 
-  <input id="dh" type="button" value="Test DH"/><br/>
+  <div id="nav">
+    <button id="dh">Test DH</button>
+    <button id="lsSet">SET KEY</button>
+    <button id="lsGet">GET KEY</button>
+    <button id="lsExp">EXP KEY</button>
+    <button onclick="$('#lsInp').click();">INP KEY</button>
+    <div style='height:0px;width:0px;overflow:hidden;'><input id="lsInp" type="file"/></div>
+  </div>
 
-  <input id="lsSet" type="button" value="SET KEY"/><br/>
-  <input id="lsGet" type="button" value="GET KEY"/><br/>
-  <input id="lsExp" type="button" value="EXP KEY"/><br/>
-  <input id="lsInp" type="file"   value="INP KEY"/><br/>
 
 </body>
 </html>

@@ -159,3 +159,6 @@
 [Thu Dec 04 09:33:58.038269 2014] [:error] [pid 2601] [client 127.0.0.1:50505] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init()
 [Thu Dec 04 09:33:58.038528 2014] [:error] [pid 2601] [client 127.0.0.1:50505] - index.php:42 calcDiffieHellmanSecret()
 [Thu Dec 04 09:33:58.038682 2014] [:error] [pid 2601] [client 127.0.0.1:50505] - index.php:95 Base->run()
+[Thu Dec 04 12:20:11.914466 2014] [:error] [pid 2597] [client 127.0.0.1:52846] HTTP 403 (GET /dh)
+[Thu Dec 04 12:20:11.914944 2014] [:error] [pid 2597] [client 127.0.0.1:52846] - index.php:31 Session->__construct()
+[Thu Dec 04 12:20:11.915357 2014] [:error] [pid 2597] [client 127.0.0.1:52846] - index.php:95 Base->run()

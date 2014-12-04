@@ -35,12 +35,12 @@ $(document).ready(function () {
     } else {
       private_key = 'Sorry! No Web Storage support..';
     }
-    $('#out').append('Get private key:\n'+private_key+']\n');
+    $('#out').append('Get private key:\n'+private_key+'\n');
   });
 
   $('#lsSet').click(function(){
     if(typeof(Storage) !== "undefined") {
-      var regex = '.{1,64}(\\s|$)|.{64}|.+$';
+      var regex = '.{1,32}(\\s|$)|.{32}|.+$';
       private_key = rnd(256).match( RegExp(regex, 'g') ).join('\n');
       localStorage.setItem("private_key",private_key);
       private_key = localStorage.getItem("private_key");
@@ -49,7 +49,7 @@ $(document).ready(function () {
   });
 
   $('#lsExp').click(function(){
-    private_key = '# Hydra Terminal Private Key (Exported: '+new Date().getTime()+')\n\n'+private_key;
+    private_key = '# Hydra Terminal Private Key\n# Exported: '+new Date().getTime()+'\n\n'+private_key;
     saveFile('private.key',private_key);
     $('#out').append('Exp private key:\n'+private_key+'\n');
   });
@@ -84,7 +84,6 @@ $(document).ready(function () {
       }
     });
   });
-
 
   /**
    * Init
