@@ -31,7 +31,8 @@
       background-color: #000;
       color: #008000;
       word-break: break-word;
-      height: 85%;
+      top: 0;
+      bottom: 55px;
       overflow-x: auto;
       position: fixed;
       width: 100%;
@@ -41,6 +42,22 @@
     #nav {
       position: fixed;
       bottom: 0;
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+      background-color: #000;
+      width: 100%;
+    }
+    #nav li {
+      float: left;
+      margin-right: 5px;
+      background-color: #008000;
+      width: 55px;
+      height: 55px;
+      text-align: center;
+      font-size: 24px;
+      font-family: sans-serif;
+      color: #90EE90;
     }
   </style>
   <script type="text/javascript" src="/minify/js?files=bigint.js,jquery.min.js,xxtea.js,md5.min.js,file.js,dh.js&_=<?php echo Base::instance()->get('version'); ?>"></script>
@@ -56,16 +73,14 @@
 <body>
 
   <pre id="out"></pre>
-
-  <div id="nav">
-    <button id="dh">Test DH</button>
-    <button id="lsSet">SET KEY</button>
-    <button id="lsGet">GET KEY</button>
-    <button id="lsExp">EXP KEY</button>
-    <button onclick="$('#lsInp').click();">INP KEY</button>
-    <div style='height:0px;width:0px;overflow:hidden;'><input id="lsInp" type="file"/></div>
-  </div>
-
+  <ul id="nav">
+    <li id="dh">Test DH</li>
+    <li id="lsSet">SET KEY</li>
+    <li id="lsGet">GET KEY</li>
+    <li id="lsExp">EXP KEY</li>
+    <li onclick="$('#lsInp').click();">INP KEY</li>
+  </ul>
+  <div style='height:0px;width:0px;overflow:hidden;'><input id="lsInp" type="file"/></div>
 
 </body>
 </html>

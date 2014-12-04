@@ -73,7 +73,7 @@ $(document).ready(function () {
         var str = "Hello Client! 你好，中国！",
             encrypt_data = xxtea.encrypt(xxtea.toBytes(str), xxtea.toBytes(b_sec)),
             send = (btoa(String.fromCharCode.apply(String, encrypt_data)));
-        $('#out').append('send: ' + send + '\n');
+        $('#out').append('send: ' + str + '\n');
         $.post("xxtea", {data: send}, function (reply) {
           reply = cvrt(reply);
           var decrypt_data = xxtea.toString(xxtea.decrypt(reply, xxtea.toBytes(b_sec)));

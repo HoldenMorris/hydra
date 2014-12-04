@@ -162,3 +162,6 @@
 [Thu Dec 04 12:20:11.914466 2014] [:error] [pid 2597] [client 127.0.0.1:52846] HTTP 403 (GET /dh)
 [Thu Dec 04 12:20:11.914944 2014] [:error] [pid 2597] [client 127.0.0.1:52846] - index.php:31 Session->__construct()
 [Thu Dec 04 12:20:11.915357 2014] [:error] [pid 2597] [client 127.0.0.1:52846] - index.php:95 Base->run()
+[Thu Dec 04 12:55:52.513250 2014] [:error] [pid 22606] [client 127.0.0.1:53103] HTTP 403 (GET /dh)
+[Thu Dec 04 12:55:52.513539 2014] [:error] [pid 22606] [client 127.0.0.1:53103] - index.php:31 Session->__construct()
+[Thu Dec 04 12:55:52.513760 2014] [:error] [pid 22606] [client 127.0.0.1:53103] - index.php:95 Base->run()
