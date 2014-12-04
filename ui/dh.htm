@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript" src="/minify/js?files=bigint.js,jquery.min.js,xxtea.js,dh.js&_=<?php echo Base::instance()->get('version'); ?>"></script>
+  <script>
+    var dh = {
+      A:"<?php echo Base::instance()->get('dh_A'); ?>",
+      gen:"<?php echo Base::instance()->get('dh_gen'); ?>",
+      mod:"<?php echo Base::instance()->get('dh_mod'); ?>",
+      rnd:"<?php echo Base::instance()->get('dh_rnd'); ?>"
+    };
+  </script>
+</head>
+<body>
+<pre id="out"></pre>
+</body>
+</html>

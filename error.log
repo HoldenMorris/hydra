@@ -35,3 +35,113 @@
 [Tue Dec 02 08:33:03.181442 2014] [:error] [pid 24812] [client 127.0.0.1:51339] Fatal error: syntax error, unexpected '?', referer: http://l-www.hydra.com/
 [Tue Dec 02 10:40:52.151646 2014] [:error] [pid 22638] [client 127.0.0.1:60126] HTTP 404 (POST /ajax/test.html), referer: http://l-www.hydra.com/
 [Tue Dec 02 10:40:52.151855 2014] [:error] [pid 22638] [client 127.0.0.1:60126] - index.php:55 Base->run(), referer: http://l-www.hydra.com/
+[Tue Dec 02 15:56:51.554422 2014] [:error] [pid 22638] [client 127.0.0.1:41247] require(lib/aes.class.php): failed to open stream: No such file or directory
+[Tue Dec 02 15:56:51.554732 2014] [:error] [pid 22638] [client 127.0.0.1:41247] - index.php:28 Base->{closure}()
+[Tue Dec 02 15:56:51.554949 2014] [:error] [pid 22638] [client 127.0.0.1:41247] - index.php:28 {closure}()
+[Tue Dec 02 15:56:51.555109 2014] [:error] [pid 22638] [client 127.0.0.1:41247] - index.php:78 Base->run()
+[Tue Dec 02 15:57:09.604213 2014] [:error] [pid 22641] [client 127.0.0.1:41252] require(/lib/aes.class.php): failed to open stream: No such file or directory
+[Tue Dec 02 15:57:09.604523 2014] [:error] [pid 22641] [client 127.0.0.1:41252] - index.php:28 Base->{closure}()
+[Tue Dec 02 15:57:09.604777 2014] [:error] [pid 22641] [client 127.0.0.1:41252] - index.php:28 {closure}()
+[Tue Dec 02 15:57:09.605106 2014] [:error] [pid 22641] [client 127.0.0.1:41252] - index.php:78 Base->run()
+[Tue Dec 02 15:57:58.224160 2014] [:error] [pid 22643] [client 127.0.0.1:41265] require(lib/aes.class.php): failed to open stream: No such file or directory
+[Tue Dec 02 16:15:26.155663 2014] [:error] [pid 22636] [client 127.0.0.1:41387] HTTP 404 (GET /ui/aes.js), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:15:26.156012 2014] [:error] [pid 22636] [client 127.0.0.1:41387] - index.php:85 Base->run(), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:15:26.163512 2014] [:error] [pid 22641] [client 127.0.0.1:41388] HTTP 404 (GET /ui/aes.crt.js), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:15:26.163698 2014] [:error] [pid 22641] [client 127.0.0.1:41388] - index.php:85 Base->run(), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:02.126032 2014] [:error] [pid 24811] [client 127.0.0.1:41389] HTTP 404 (GET /ui/aes.js), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:02.126300 2014] [:error] [pid 24811] [client 127.0.0.1:41389] - index.php:85 Base->run(), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:02.132074 2014] [:error] [pid 22638] [client 127.0.0.1:41390] HTTP 404 (GET /ui/aes.crt.js), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:02.132382 2014] [:error] [pid 22638] [client 127.0.0.1:41390] - index.php:85 Base->run(), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:34.998730 2014] [:error] [pid 22636] [client 127.0.0.1:41397] HTTP 404 (GET /ui/js/aes.crt.js), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:34.998924 2014] [:error] [pid 22636] [client 127.0.0.1:41397] - index.php:85 Base->run(), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:42.564376 2014] [:error] [pid 17389] [client 127.0.0.1:41399] HTTP 404 (GET /ui/js/aescrt.js), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 16:16:42.564755 2014] [:error] [pid 17389] [client 127.0.0.1:41399] - index.php:85 Base->run(), referer: http://l-www.hydra.com/about?2
+[Tue Dec 02 17:52:23.367877 2014] [:error] [pid 24812] [client 127.0.0.1:42203] HTTP 404 (GET /favicon.ico)
+[Tue Dec 02 17:52:23.368164 2014] [:error] [pid 24812] [client 127.0.0.1:42203] - index.php:85 Base->run()
+[Tue Dec 02 19:48:40.093550 2014] [:error] [pid 24811] [client 127.0.0.1:42897] HTTP 404 (GET /favicon.ico)
+[Tue Dec 02 19:48:40.093795 2014] [:error] [pid 24811] [client 127.0.0.1:42897] - index.php:85 Base->run()
+[Wed Dec 03 07:07:11.548855 2014] [:error] [pid 2604] [client 127.0.0.1:54852] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 07:07:11.599583 2014] [:error] [pid 2604] [client 127.0.0.1:54852] - index.php:85 Base->run()
+[Wed Dec 03 12:44:17.543518 2014] [:error] [pid 9417] [client 127.0.0.1:60021] PHP Parse error:  syntax error, unexpected ')' in /home/holdenm/workspace/hydra/index.php on line 41
+[Wed Dec 03 12:44:22.594975 2014] [:error] [pid 8102] [client 127.0.0.1:60025] PHP Parse error:  syntax error, unexpected ')' in /home/holdenm/workspace/hydra/index.php on line 41
+[Wed Dec 03 12:44:24.340317 2014] [:error] [pid 8099] [client 127.0.0.1:60026] PHP Parse error:  syntax error, unexpected ')' in /home/holdenm/workspace/hydra/index.php on line 41
+[Wed Dec 03 12:44:26.203260 2014] [:error] [pid 8101] [client 127.0.0.1:60027] PHP Parse error:  syntax error, unexpected ')' in /home/holdenm/workspace/hydra/index.php on line 41
+[Wed Dec 03 12:44:39.930573 2014] [:error] [pid 8099] [client 127.0.0.1:60033] PHP Parse error:  syntax error, unexpected ')' in /home/holdenm/workspace/hydra/index.php on line 41
+[Wed Dec 03 13:12:30.164890 2014] [:error] [pid 8102] [client 127.0.0.1:60251] gmp_init(): Unable to convert variable to GMP - wrong type, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:12:30.165117 2014] [:error] [pid 8102] [client 127.0.0.1:60251] - lib/cypher/diffie-hellman-gmp.php:72 gmp_init(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:12:30.165269 2014] [:error] [pid 8102] [client 127.0.0.1:60251] - index.php:47 calcDiffieHellmanSecret(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:12:30.165340 2014] [:error] [pid 8102] [client 127.0.0.1:60251] - index.php:121 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:13:06.211819 2014] [:error] [pid 8100] [client 127.0.0.1:60264] gmp_init(): Unable to convert variable to GMP - wrong type, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:13:06.211920 2014] [:error] [pid 8100] [client 127.0.0.1:60264] - index.php:50 gmp_init(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:13:06.211994 2014] [:error] [pid 8100] [client 127.0.0.1:60264] - index.php:121 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:20:57.403897 2014] [:error] [pid 8103] [client 127.0.0.1:60323] PHP Fatal error:  Cannot use object of type stdClass as array in /home/holdenm/workspace/hydra/index.php on line 42, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:20:57.442155 2014] [:error] [pid 8103] [client 127.0.0.1:60323] Fatal error: Cannot use object of type stdClass as array, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:32:43.311385 2014] [:error] [pid 8101] [client 127.0.0.1:60384] Undefined index: gen, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:32:43.311486 2014] [:error] [pid 8101] [client 127.0.0.1:60384] - index.php:41 Base->{closure}(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:32:43.311590 2014] [:error] [pid 8101] [client 127.0.0.1:60384] - index.php:108 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 13:34:16.391195 2014] [:error] [pid 8102] [client 127.0.0.1:60390] Undefined index: A
+[Wed Dec 03 13:34:16.391451 2014] [:error] [pid 8102] [client 127.0.0.1:60390] - index.php:30 Base->{closure}()
+[Wed Dec 03 13:34:16.391696 2014] [:error] [pid 8102] [client 127.0.0.1:60390] - index.php:108 Base->run()
+[Wed Dec 03 13:36:42.070350 2014] [:error] [pid 8099] [client 127.0.0.1:60408] Undefined index: A
+[Wed Dec 03 13:36:42.070862 2014] [:error] [pid 8099] [client 127.0.0.1:60408] - index.php:30 Base->{closure}()
+[Wed Dec 03 13:36:42.071253 2014] [:error] [pid 8099] [client 127.0.0.1:60408] - index.php:112 Base->run()
+[Wed Dec 03 13:36:44.662537 2014] [:error] [pid 8100] [client 127.0.0.1:60409] Undefined index: A
+[Wed Dec 03 13:36:44.662729 2014] [:error] [pid 8100] [client 127.0.0.1:60409] - index.php:30 Base->{closure}()
+[Wed Dec 03 13:36:44.662814 2014] [:error] [pid 8100] [client 127.0.0.1:60409] - index.php:112 Base->run()
+[Wed Dec 03 13:37:31.185425 2014] [:error] [pid 8101] [client 127.0.0.1:60414] Undefined index: A
+[Wed Dec 03 13:37:31.185723 2014] [:error] [pid 8101] [client 127.0.0.1:60414] - index.php:30 Base->{closure}()
+[Wed Dec 03 13:37:31.186040 2014] [:error] [pid 8101] [client 127.0.0.1:60414] - index.php:112 Base->run()
+[Wed Dec 03 14:27:35.357285 2014] [:error] [pid 8101] [client 127.0.0.1:33098] require(lib/cypher/diffie-hellman-php.php): failed to open stream: No such file or directory
+[Wed Dec 03 14:27:35.357477 2014] [:error] [pid 8101] [client 127.0.0.1:33098] - index.php:25 Base->{closure}()
+[Wed Dec 03 14:27:35.357605 2014] [:error] [pid 8101] [client 127.0.0.1:33098] - index.php:25 {closure}()
+[Wed Dec 03 14:27:35.357689 2014] [:error] [pid 8101] [client 127.0.0.1:33098] - index.php:108 Base->run()
+[Wed Dec 03 14:28:47.291606 2014] [:error] [pid 8102] [client 127.0.0.1:33099] PHP Fatal error:  Maximum execution time of 60 seconds exceeded in /home/holdenm/workspace/hydra/lib/cypher/BigInt.php on line 842
+[Wed Dec 03 14:28:47.291696 2014] [:error] [pid 8102] [client 127.0.0.1:33099] Fatal error: Maximum execution time of 60 seconds exceeded
+[Wed Dec 03 15:01:21.986280 2014] [:error] [pid 9417] [client 127.0.0.1:33495] HTTP 404 (GET /xxt)
+[Wed Dec 03 15:01:21.986410 2014] [:error] [pid 9417] [client 127.0.0.1:33495] - index.php:92 Base->run()
+[Wed Dec 03 15:01:32.344405 2014] [:error] [pid 8103] [client 127.0.0.1:33504] HTTP 404 (GET /dh/xxtea/IRkfA9shHwlzoFcA3r9AS/7FMrQ2BwHCLchKT3MZA+Fw5iEf), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:01:32.344484 2014] [:error] [pid 8103] [client 127.0.0.1:33504] - index.php:92 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:02:17.509230 2014] [:error] [pid 8101] [client 127.0.0.1:33512] HTTP 404 (GET /dh/xxtea/IRkfA9shHwlzoFcA3r9AS/7FMrQ2BwHCLchKT3MZA+Fw5iEf), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:02:17.509302 2014] [:error] [pid 8101] [client 127.0.0.1:33512] - index.php:91 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:03:19.350842 2014] [:error] [pid 8103] [client 127.0.0.1:33524] HTTP 404 (GET /dh/xxtea/[object%20Uint8Array]), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:03:19.350939 2014] [:error] [pid 8103] [client 127.0.0.1:33524] - index.php:91 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:12:03.731503 2014] [:error] [pid 9417] [client 127.0.0.1:33583] HTTP 405 (POST /dh/xxtea), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:12:03.731579 2014] [:error] [pid 9417] [client 127.0.0.1:33583] - index.php:91 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:12:53.885712 2014] [:error] [pid 8101] [client 127.0.0.1:33597] HTTP 405 (POST /dh/xxtea), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:12:53.885795 2014] [:error] [pid 8101] [client 127.0.0.1:33597] - index.php:91 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:13:55.924443 2014] [:error] [pid 8099] [client 127.0.0.1:33603] HTTP 405 (POST /dh/xxtea), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:13:55.924622 2014] [:error] [pid 8099] [client 127.0.0.1:33603] - index.php:92 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:14:12.874253 2014] [:error] [pid 9437] [client 127.0.0.1:33607] HTTP 405 (POST /dh/xxtea), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 15:14:12.874374 2014] [:error] [pid 9437] [client 127.0.0.1:33607] - index.php:92 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:26:50.257970 2014] [:error] [pid 15183] [client 127.0.0.1:34474] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:26:50.258100 2014] [:error] [pid 15183] [client 127.0.0.1:34474] - index.php:92 Base->run()
+[Wed Dec 03 17:26:50.930061 2014] [:error] [pid 15183] [client 127.0.0.1:34474] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:26:50.930171 2014] [:error] [pid 15183] [client 127.0.0.1:34474] - index.php:92 Base->run()
+[Wed Dec 03 17:26:51.271312 2014] [:error] [pid 15183] [client 127.0.0.1:34474] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:26:51.271374 2014] [:error] [pid 15183] [client 127.0.0.1:34474] - index.php:92 Base->run()
+[Wed Dec 03 17:26:51.570353 2014] [:error] [pid 15183] [client 127.0.0.1:34474] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:26:51.570418 2014] [:error] [pid 15183] [client 127.0.0.1:34474] - index.php:92 Base->run()
+[Wed Dec 03 17:46:39.388021 2014] [:error] [pid 8103] [client 127.0.0.1:34595] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:46:39.388174 2014] [:error] [pid 8103] [client 127.0.0.1:34595] - index.php:92 Base->run()
+[Wed Dec 03 17:46:40.220607 2014] [:error] [pid 8103] [client 127.0.0.1:34595] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:46:40.220728 2014] [:error] [pid 8103] [client 127.0.0.1:34595] - index.php:92 Base->run()
+[Wed Dec 03 17:46:40.705683 2014] [:error] [pid 8103] [client 127.0.0.1:34595] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:46:40.705790 2014] [:error] [pid 8103] [client 127.0.0.1:34595] - index.php:92 Base->run()
+[Wed Dec 03 17:46:41.086737 2014] [:error] [pid 8103] [client 127.0.0.1:34595] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:46:41.086801 2014] [:error] [pid 8103] [client 127.0.0.1:34595] - index.php:92 Base->run()
+[Wed Dec 03 17:57:02.852020 2014] [:error] [pid 15183] [client 127.0.0.1:34661] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:57:02.852217 2014] [:error] [pid 15183] [client 127.0.0.1:34661] - index.php:92 Base->run()
+[Wed Dec 03 17:57:04.211437 2014] [:error] [pid 15183] [client 127.0.0.1:34661] HTTP 404 (GET /favicon.ico)
+[Wed Dec 03 17:57:04.211635 2014] [:error] [pid 15183] [client 127.0.0.1:34661] - index.php:92 Base->run()
+[Wed Dec 03 17:57:42.547998 2014] [:error] [pid 8102] [client 127.0.0.1:34676] gmp_init(): Unable to convert variable to GMP - wrong type, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:57:42.548120 2014] [:error] [pid 8102] [client 127.0.0.1:34676] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:57:42.548253 2014] [:error] [pid 8102] [client 127.0.0.1:34676] - index.php:42 calcDiffieHellmanSecret(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:57:42.548325 2014] [:error] [pid 8102] [client 127.0.0.1:34676] - index.php:92 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:57:44.733244 2014] [:error] [pid 9417] [client 127.0.0.1:34677] gmp_init(): Unable to convert variable to GMP - wrong type, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:57:44.733481 2014] [:error] [pid 9417] [client 127.0.0.1:34677] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:57:44.733912 2014] [:error] [pid 9417] [client 127.0.0.1:34677] - index.php:42 calcDiffieHellmanSecret(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:57:44.734060 2014] [:error] [pid 9417] [client 127.0.0.1:34677] - index.php:92 Base->run(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:58:06.355321 2014] [:error] [pid 8101] [client 127.0.0.1:34679] gmp_init(): Unable to convert variable to GMP - wrong type, referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:58:06.355403 2014] [:error] [pid 8101] [client 127.0.0.1:34679] - lib/cypher/diffie-hellman-gmp.php:71 gmp_init(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:58:06.355482 2014] [:error] [pid 8101] [client 127.0.0.1:34679] - index.php:42 calcDiffieHellmanSecret(), referer: http://l-www.hydra.com/dh
+[Wed Dec 03 17:58:06.355542 2014] [:error] [pid 8101] [client 127.0.0.1:34679] - index.php:92 Base->run(), referer: http://l-www.hydra.com/dh

@@ -2,7 +2,7 @@
  * Hydra Main App
  * --------------
  */
-var caps = false, shift = false, ctrl = false;
+var caps=false, shift=false, ctrl=false, dx=0, dy=0, tsx=0, tsy=0, touched=false;
 
 var snd = new Howl({
   urls: ['/ui/snd/click.mp3']
@@ -87,29 +87,88 @@ $(document).ready(function () {
       prompt( shiftKey, ctrlKey, keyCode);
       e.preventDefault();
       return false;
-  });
+    });;
 
+  $('#container')
+    .on('touchstart mousedown',function(e){
+      touched=true;
+      var elm = $(this).offset(), x=0, y=0;
+      if (e.originalEvent.constructor.name == 'MouseEvent'){
+        var mouse = e.originalEvent;
+        x = mouse.x;
+        y = mouse.y;
+      } else {
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        x = touch.pageX;
+        y = touch.pageY;
+      }
+      x = x - elm.left;
+      y = y - elm.top;
+      if(x < $(this).width() && x > 0){
+        if(y < $(this).height() && y > 0){
+          tsy = y;
+          tsx = x;
+        }
+      }
+      if(typeof e != "undefined"){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    })
+    .on('touchend mouseup',function(e){
+      touched=false;
+    })
+    .on('touchmove mousemove',function(e){
+      if(touched){
+        var elm = $(this).offset(), x=0, y=0;
+        if (e.originalEvent.constructor.name == 'MouseEvent'){
+          var mouse = e.originalEvent;
+          x = mouse.x;
+          y = mouse.y;
+        } else {
+          var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+          x = touch.pageX;
+          y = touch.pageY;
+        }
+        x = x - elm.left;
+        y = y - elm.top;
+        if(x < $(this).width() && x > 0){
+          if(y < $(this).height() && y > 0){
+            dx = tsx-x;
+            dy = tsy-y;
+            $('#out').text( (dx>0?'<':'>')+' ' + Math.abs(dx)+' '+(dy<0?'v':'^')+' '+Math.abs(dy));
+          }
+        }
+      }
+    });
 
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
       snd.play();
-      if(typeof e != "undefined"){
-        e.preventDefault();
-        e.stopImmediatePropagation();
-      }
       $(this).addClass('dn')
     })
     .on('touchend touchcancel mouseup', function (e) {
-      if(typeof e != "undefined"){
-        e.preventDefault();
-        e.stopImmediatePropagation();
+      touched=false;
+      var $k = $(this);
+      if(Math.abs(dy)>50){
+        if(dy<0){
+          $('#kbd').addClass('off');
+          //$('#kbd').animate({bottom:'-164px'});
+        } else {
+          $('#kbd').removeClass('off');
+          //$('#kbd').animate({bottom:'0px'});
+        }
+      } else {
+        if(typeof e != "undefined"){
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+        var c = $k.data('c'),
+            t = (!ctrl ? $('span:first', $k).text() : $('span:last', $k).text());
+        if (c === undefined) c = -1;
+        prompt( shift, ctrl, c, t);
       }
-      var $k = $(this),
-        c = $k.data('c'),
-        t = (!ctrl ? $('span:first', $k).text() : $('span:last', $k).text());
-      if (c === undefined) c = -1;
       $k.removeClass('dn');
-      prompt( shift, ctrl, c, t);
       return false;
     });
 

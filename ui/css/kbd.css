@@ -1,11 +1,25 @@
 #kbd {
-  /*display: none;*/
   border-collapse: collapse;
   width: 100%;
   margin: 0;
   text-transform: lowercase;
   position: absolute;
   bottom: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#kbd.off {
+  bottom: -205px !important;
+}
+
+#kbd tr.title td {
+  display: none;
+}
+#kbd.off tr.title td {
+  display: table-cell;
 }
 
 #kbd.caps {
