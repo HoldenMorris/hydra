@@ -18,13 +18,23 @@
   <link type="image/gif" rel="shortcut icon" href="/img/hydra-s.gif"/>
 
   <link rel="stylesheet" type="text/css" href="/minify/css?files=normalize.css,main.css,kbd.css&_=<?php echo md5(Base::instance()->get('version')); ?>" />
+  <link rel="stylesheet" href="/ui/css/font-awesome.min.css">
   <script type="text/javascript" src="/minify/js?files=jquery.min.js,howler.min.js,gps.js,main.js&_=<?php echo md5(Base::instance()->get('version')); ?>"></script>
 
 </head>
 <body>
 
   <div id="container">
+    <div id="status"></div>
     <?php echo $this->render(Base::instance()->get('content')); ?>
+
+    <!--<ul class="fa-ul">-->
+      <!--<li><i class="fa-li fa fa-check-square"></i>List icons</li>-->
+      <!--<li><i class="fa-li fa fa-check-square"></i>can be used</li>-->
+      <!--<li><i class="fa-li fa fa-spinner fa-spin"></i>as bullets</li>-->
+      <!--<li><i class="fa-li fa fa-square"></i>in lists</li>-->
+    <!--</ul>-->
+
     <?php echo $this->render(Base::instance()->get('kbd')); ?>
   </div>
 

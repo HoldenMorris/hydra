@@ -23,6 +23,7 @@ body {
   height: 100%;
   position: relative;
   margin: auto;
+  background: url("/img/hydra.gif") right top no-repeat;
 }
 
 #out {
@@ -37,11 +38,8 @@ body {
   padding: 0;
 }
 
-#header {
-  background: url("/img/hydra.gif") right top no-repeat;
-}
 #header h1 {
-  padding: 10px;
+  padding: 10px 0;
   margin: 0;
 }
 #header h1 a {
@@ -51,6 +49,13 @@ body {
 
 #prompt {
   margin-left: 10px
+}
+
+#status {
+  position: absolute;
+  top: 2px;
+  font-size: xx-small;
+  color: #315D81;
 }
 
 input {
@@ -123,8 +128,6 @@ input:focus {
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
   #container {
     width: 100%;
-  }
-  #header {
     background: url("/img/hydra-s.gif") top right no-repeat;
   }
   #header h1 {

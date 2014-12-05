@@ -11,10 +11,6 @@
   transition: all 0.5s ease;
 }
 
-#kbd.off {
-  bottom: -205px !important;
-}
-
 #kbd tr.title td {
   display: none;
 }

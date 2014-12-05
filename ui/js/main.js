@@ -10,12 +10,15 @@ var snd = new Howl({
 
 $(document).ready(function () {
 
-  offset = $('#kbd').offset();
-  $('#out').css('max-height',(offset.top-75));
+  kbd_offset = $('#kbd').offset();
+  $('#out').css('max-height',(kbd_offset.top-75));
+
+  //kbd_position = $('#kbd').position();
+  //console.log(kbd_position);
 
   function prompt(shiftKey, ctrlKey, keyCode, char) {
 
-    console.log( 'caps: '+caps+' shift: '+shiftKey+' ctrl: '+ctrlKey+' keyCode: '+keyCode+' char: '+char );
+    //console.log( 'caps: '+caps+' shift: '+shiftKey+' ctrl: '+ctrlKey+' keyCode: '+keyCode+' char: '+char );
 
     if (keyCode !== -1) {
       if(keyCode>=32 && keyCode<=126){
@@ -34,8 +37,15 @@ $(document).ready(function () {
         switch(inp.toLowerCase()) {
             case 'loc':
               $('#out').append('<p>Getting GPS data...</p>');
+              $('#out').append('<i class="fa fa-spinner fa-spin"></i>');
               getGPSLocation(function(pos,err){
+                $("#out i:last-child").remove();
+                if(typeof pos != 'undefined'){
+                  //console.log(pos);
+                  $('#out').append('<p>'+pos.constructor.name+'</p>');
+                }
                 if(err){
+                  //console.log(err);
                   $('#out').append('<p>'+err+'</p>');
                 } else {
                   $('#out').append('<p>Latitude: '+pos.coords.latitude +'<br/>Longitude: ' +pos.coords.longitude+'</p>');
@@ -46,7 +56,9 @@ $(document).ready(function () {
               $('#out').html('');
               break;
             default:
+              $('#out').append('<i class="fa fa-spinner fa-spin"></i>');
               $.post( "api", {cmd:inp}, function( data ) {
+                $("#out i:last-child").remove();
                 $('#out').append('<p>'+data.msg+'</p>');
               });
         }
@@ -80,7 +92,7 @@ $(document).ready(function () {
       return false;
     })
     .on("keyup", function (e) {
-      console.log('keyup');
+      //console.log('keyup');
       var keyCode = e.keyCode ? e.keyCode : e.which;
       var shiftKey = e.shiftKey ? e.shiftKey : ((keyCode == 16) ? true : false);
       var ctrlKey = e.ctrlKey ? e.ctrlKey : ((keyCode == 20) ? true : false);
@@ -118,6 +130,7 @@ $(document).ready(function () {
     })
     .on('touchend mouseup',function(e){
       touched=false;
+      $('#kbd td').removeClass('dn');
     })
     .on('touchmove mousemove',function(e){
       if(touched){
@@ -137,7 +150,7 @@ $(document).ready(function () {
           if(y < $(this).height() && y > 0){
             dx = tsx-x;
             dy = tsy-y;
-            $('#out').text( (dx>0?'<':'>')+' ' + Math.abs(dx)+' '+(dy<0?'v':'^')+' '+Math.abs(dy));
+            $('#status').text( (dx>0?'<':'>')+' ' + Math.abs(Math.round(dx))+' '+(dy<0?'v':'^')+' '+Math.abs(Math.round(dy)));
           }
         }
       }
@@ -145,20 +158,30 @@ $(document).ready(function () {
 
   $('#kbd td')
     .on('touchstart mousedown', function (e) {
-      snd.play();
-      $(this).addClass('dn')
+      if($(this).hasClass('func')){
+        $('#kbd').removeClass('off').css('bottom','0px');
+        kbd_offset = $('#kbd').offset();
+        $('#out').css('max-height',(kbd_offset.top-75));
+      } else {
+        snd.play();
+        $(this).addClass('dn');
+      }
     })
     .on('touchend touchcancel mouseup', function (e) {
       touched=false;
       var $k = $(this);
       if(Math.abs(dy)>50){
+        console.log(dy);
+        var $kbd = $('#kbd');
         if(dy<0){
-          $('#kbd').addClass('off');
-          //$('#kbd').animate({bottom:'-164px'});
-        } else {
-          $('#kbd').removeClass('off');
-          //$('#kbd').animate({bottom:'0px'});
+          var kh = $kbd.height()-$('tr.title',$kbd).height();
+          $kbd.css('bottom','-'+kh+'px').addClass('off');
+          //kbd_position = $('#kbd').position();
+          //console.log(kbd_position);
+          //$('#out').css('max-height',(kbd_offset.top-75));
         }
+        dx = 0;
+        dy = 0;
       } else {
         if(typeof e != "undefined"){
           e.preventDefault();
@@ -169,13 +192,13 @@ $(document).ready(function () {
         if (c === undefined) c = -1;
         prompt( shift, ctrl, c, t);
       }
-      $k.removeClass('dn');
+      $('#kbd td').removeClass('dn');
       return false;
     });
 
-//  ke = jQuery.Event("keyup");
-//  ke.which = 88; // key value of x
-//  console.log(ke);
-//  $(document).trigger(ke);
+//ke = jQuery.Event("keyup");
+//ke.which = 88; // key value of x
+//console.log(ke);
+//$(document).trigger(ke);
 
 });
