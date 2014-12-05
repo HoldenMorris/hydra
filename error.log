@@ -168,3 +168,7 @@
 [Thu Dec 04 13:40:51.491807 2014] [:error] [pid 2599] [client 127.0.0.1:53519] HTTP 403 (GET /dh)
 [Thu Dec 04 13:40:51.492230 2014] [:error] [pid 2599] [client 127.0.0.1:53519] - index.php:31 Session->__construct()
 [Thu Dec 04 13:40:51.492650 2014] [:error] [pid 2599] [client 127.0.0.1:53519] - index.php:95 Base->run()
+[Fri Dec 05 12:22:56.071547 2014] [:error] [pid 2623] [client 127.0.0.1:59801] HTTP 404 (GET /favicon.ico)
+[Fri Dec 05 12:22:56.108080 2014] [:error] [pid 2623] [client 127.0.0.1:59801] - index.php:111 Base->run()
+[Fri Dec 05 13:00:25.142613 2014] [:error] [pid 2625] [client 127.0.0.1:60758] HTTP 404 (GET /somevideo.webm), referer: http://l-www.hydra.com/
+[Fri Dec 05 13:00:25.142741 2014] [:error] [pid 2625] [client 127.0.0.1:60758] - index.php:111 Base->run(), referer: http://l-www.hydra.com/

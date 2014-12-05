@@ -83,6 +83,22 @@ $f3->route('POST /api [ajax]',
         case 'help':
           $response = 'Help is at hand!';
           break;
+        case 'ver':
+          $response = 'Ver: '.$f3->get('version');
+          break;
+        case 'upd':
+          $response = 'Last update: '.$f3->get('last_update');
+          break;
+        case 'whoami':
+          $response = exec('whoami');
+          break;
+        case 'll':
+          exec('ls -l', $lines, $return_var );
+          $response = '<p class="cmd">&gt;&nbsp;'.$cmd.'</p>';
+          foreach($lines as $line){
+            $response .= '<p>'.$line.'</p>';
+          }
+          break;
         default:
           $response = $cmd.': command not found';
       }

@@ -2,13 +2,17 @@
  * Hydra Main App
  * --------------
  */
-var caps=false, shift=false, ctrl=false, dx=0, dy=0, tsx=0, tsy=0, touched=false;
+var caps=false, shift=false, ctrl=false, dx=0, dy=0, tsx=0, tsy=0, touched=false, buffer_max=100;
 
 var snd = new Howl({
   urls: ['/ui/snd/click.mp3']
 });
 
 $(document).ready(function () {
+
+  function hasGetUserMedia() {
+    return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  }
 
   kbd_offset = $('#kbd').offset();
   $('#out').css('max-height',(kbd_offset.top-75));
@@ -34,37 +38,92 @@ $(document).ready(function () {
         inp = inp.slice(0, -1);
         break;
       case 13:
+        var out = $('#out');
+        // prune out old lines if more than buffer
+        var buffer = $('p',out).length;
+        $('#status').text('Buffer: '+buffer );
+        if(buffer>buffer_max){
+          $('p',out).slice(0,buffer-buffer_max).remove();
+        }
         switch(inp.toLowerCase()) {
             case 'loc':
-              $('#out').append('<p>Getting GPS data...</p>');
-              $('#out').append('<i class="fa fa-spinner fa-spin"></i>');
+              out.append('<p>Getting GPS data...</p>');
+              out.append('<i class="fa fa-spinner fa-spin"></i>');
               getGPSLocation(function(pos,err){
-                $("#out i:last-child").remove();
+                $("i:last-child",out).remove();
                 if(typeof pos != 'undefined'){
                   //console.log(pos);
-                  $('#out').append('<p>'+pos.constructor.name+'</p>');
+                  out.append('<p>'+pos.constructor.name+'</p>');
                 }
                 if(err){
                   //console.log(err);
-                  $('#out').append('<p>'+err+'</p>');
+                  out.append('<p>'+err+'</p>');
                 } else {
-                  $('#out').append('<p>Latitude: '+pos.coords.latitude +'<br/>Longitude: ' +pos.coords.longitude+'</p>');
+                  out.append('<p>Latitude: '+pos.coords.latitude +'<br/>Longitude: ' +pos.coords.longitude+'</p>');
                 }
               });
               break;
             case 'clr':
-              $('#out').html('');
+              out.empty();
+              break;
+            case 'vid':
+              out.empty();
+              if (hasGetUserMedia()) {
+                // Good to go!
+
+                navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+                var video = document.querySelector('video');
+                var canvas = document.querySelector('canvas');
+                var ctx = canvas.getContext('2d');
+                $(video).show();
+                $("#snap1").show();
+                var localMediaStream = null;
+                if (navigator.getUserMedia) {
+                  navigator.getUserMedia(
+                    {audio: false, video: true},
+                    function(stream) {
+                      video.src = window.URL.createObjectURL(stream);
+                      localMediaStream = stream;
+                      var csize = setTimeout(function() {
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        $("#snap1").height = video.videoHeight;
+                        $("#snap1").width = video.videoWidth;
+                      }, 100);
+                      $(video).on('mouseup',function(){
+                        console.log('snapshot');
+                        if (localMediaStream) {
+                          ctx.drawImage(video,0,0);
+                          ctx.font="30px Verdana";
+                          ctx.fillText("Hello World!",10,50);
+                          // "image/webp" works in Chrome.
+                          // Other browsers will fall back to image/png.
+                          var tmp = canvas.toDataURL('image/webp');
+                          //console.log(tmp);
+                          $('#snap1').attr('src',tmp);
+                        }
+                      });
+                      //video.addEventListener('click', snapshot, false);
+                    },
+                    function(error){
+                      console.log(error);
+                    }
+                  );
+                } else {
+                  video.src = 'some-fallback-video.webm'; // fallback.
+                }
+              } else {
+                alert('getUserMedia() is not supported in your browser');
+              }
               break;
             default:
-              $('#out').append('<i class="fa fa-spinner fa-spin"></i>');
+              out.append('<i class="fa fa-spinner fa-spin"></i>');
               $.post( "api", {cmd:inp}, function( data ) {
-                $("#out i:last-child").remove();
-                $('#out').append('<p>'+data.msg+'</p>');
+                $("i:last-child",out).remove();
+                out.append('<p>'+data.msg+'</p>');
               });
         }
-        var out = $('#out');
-        var height = out[0].scrollHeight;
-        out.scrollTop(height);
+        out.animate({scrollTop:out.height()}, 'slow');
         inp = '';
         break;
       case 17:

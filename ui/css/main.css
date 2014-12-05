@@ -18,6 +18,12 @@ body {
   font-family: monospace;
 }
 
+#video1 , #snap1 {
+  height: 180px;
+  width: 240px;
+  border: 1px solid #008000;
+}
+
 #container {
   width: 640px;
   height: 100%;
@@ -29,9 +35,21 @@ body {
 #out {
   color: #9BC89B;
   overflow-y: auto;
+  width: 104%;
 }
 #out p {
   margin: 2px;
+}
+#out p.cmd {
+  color: lightgreen;
+}
+
+#scrollhide {
+ overflow: hidden;
+}
+
+#out::-webkit-scrollbar {
+ /*display: none;*/
 }
 
 #content {

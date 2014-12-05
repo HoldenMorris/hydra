@@ -26,7 +26,15 @@
 
   <div id="container">
     <div id="status"></div>
+
+
     <?php echo $this->render(Base::instance()->get('content')); ?>
+
+    <!-- https://developer.tizen.org/documentation/articles/barcode-generator-and-scanner -->
+    <video id="video1" autoplay="autoplay" style="display:none;"></video><br/>
+    <img id="snap1" style="display:none;" src="">
+    <canvas id="canvas1" style="display:none;"></canvas>
+
 
     <!--<ul class="fa-ul">-->
       <!--<li><i class="fa-li fa fa-check-square"></i>List icons</li>-->
