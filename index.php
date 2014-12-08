@@ -17,6 +17,7 @@ $f3->route('GET /',
     $f3->set('content', 'content.htm');
     $f3->set('kbd', 'kbd.htm');
     echo View::instance()->render('layout.htm');
+
   }
 );
 

@@ -2,7 +2,8 @@
  * Hydra Main App
  * --------------
  */
-var caps=false, shift=false, ctrl=false, dx=0, dy=0, tsx=0, tsy=0, touched=false, buffer_max=100;
+
+var key=false, caps=false, shift=false, ctrl=false, keycodeD, keycodeP=false, dx=0, dy=0, tsx=0, tsy=0, touched=false, buffer_max=100;
 
 var snd = new Howl({
   urls: ['/ui/snd/click.mp3']
@@ -10,34 +11,35 @@ var snd = new Howl({
 
 $(document).ready(function () {
 
-  function hasGetUserMedia() {
-    return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-  }
-
   kbd_offset = $('#kbd').offset();
   $('#out').css('max-height',(kbd_offset.top-75));
 
-  //kbd_position = $('#kbd').position();
-  //console.log(kbd_position);
-
-  function prompt(shiftKey, ctrlKey, keyCode, char) {
-
-    //console.log( 'caps: '+caps+' shift: '+shiftKey+' ctrl: '+ctrlKey+' keyCode: '+keyCode+' char: '+char );
-
-    if (keyCode !== -1) {
-      if(keyCode>=32 && keyCode<=126){
-        char = String.fromCharCode(keyCode);
-      } else {
-        char = '';
-      }
-    }
+  function prompt(key) {
     var $p = $('#prompt'),
         inp = $p.text();
-    switch(keyCode) {
-      case 8:
+    switch(key.toUpperCase()) {
+      case 'CTRL':
+      case 'CAPS':
+      case 'SHIFT':
+      case 'HOME':
+      case 'DOWN':
+      case 'UP':
+      case 'LEFT':
+      case 'RIGHT':
+      case 'END':
+      case 'PGUP':
+      case 'PGDN':
+      case 'SHIFT':
+      case false:
+        // ignore some
+        break;
+      case 'SPACE':
+        inp = inp +' ';
+        break;
+      case 'BACKSP':
         inp = inp.slice(0, -1);
         break;
-      case 13:
+      case 'ENTER':
         var out = $('#out');
         // prune out old lines if more than buffer
         var buffer = $('p',out).length;
@@ -65,12 +67,14 @@ $(document).ready(function () {
               break;
             case 'clr':
               out.empty();
+              $('#video1').hide();
+              $("#snap1").hide();
               break;
             case 'vid':
               out.empty();
-              if (hasGetUserMedia()) {
+              var hasGetUserMedia = !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+              if (hasGetUserMedia) {
                 // Good to go!
-
                 navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
                 var video = document.querySelector('video');
                 var canvas = document.querySelector('canvas');
@@ -90,7 +94,7 @@ $(document).ready(function () {
                         $("#snap1").height = video.videoHeight;
                         $("#snap1").width = video.videoWidth;
                       }, 100);
-                      $(video).on('mouseup',function(){
+                      $(video).on('snapshot',function(){
                         console.log('snapshot');
                         if (localMediaStream) {
                           ctx.drawImage(video,0,0);
@@ -103,18 +107,16 @@ $(document).ready(function () {
                           $('#snap1').attr('src',tmp);
                         }
                       });
-                      //video.addEventListener('click', snapshot, false);
                     },
                     function(error){
-                      console.log(error);
-                      out.append(error);
+                      out.append('<p>'+error.name+'</p>');
                     }
                   );
                 } else {
                   video.src = 'some-fallback-video.webm'; // fallback.
                 }
               } else {
-                alert('getUserMedia() is not supported in your browser');
+                out.append('getUserMedia() is not supported in your browser');
               }
               break;
             default:
@@ -127,16 +129,8 @@ $(document).ready(function () {
         out.animate({scrollTop:out.height()}, 'slow');
         inp = '';
         break;
-      case 17:
-        ctrl = !ctrl;
-        $('#kbd').toggleClass('ctrl');
-        break;
-      case 20:
-        caps = !caps;
-        $('#kbd').toggleClass('caps');
-        break;
       default:
-        inp = inp + (caps||shiftKey ? char : char.toLowerCase());
+        inp = inp + key;
     }
     $p.text(inp);
   }
@@ -149,18 +143,80 @@ $(document).ready(function () {
       } else {
         e.returnValue = false;
       }
+      keycodeD = (e.keyCode ? e.keyCode : e.which);
+      if(keycodeD==8) return false;
+    })
+    .on("keypress", function (e) {
+      if (!e) e = window.event;
+      keycodeP = (e.keyCode ? e.keyCode : e.which);
       return false;
     })
     .on("keyup", function (e) {
-      //console.log('keyup');
-      var keyCode = e.keyCode ? e.keyCode : e.which;
-      var shiftKey = e.shiftKey ? e.shiftKey : ((keyCode == 16) ? true : false);
-      var ctrlKey = e.ctrlKey ? e.ctrlKey : ((keyCode == 20) ? true : false);
+      key = false;
+
+      if(keycodeP){
+        key = String.fromCharCode(keycodeP);
+      }
+
+      if(keycodeD){
+        switch(keycodeD) {
+          case 8:
+            key = 'BACKSP';
+            break;
+          case 9:
+            key = 'TAB';
+            break;
+          case 13:
+            key = 'ENTER';
+            break;
+          case 16:
+            key = 'SHIFT';
+            break;
+          case 17:
+            key = 'CTRL';
+            break;
+          case 27:
+            key = 'ESC';
+            break;
+          case 32:
+            key = 'SPACE';
+            break;
+          case 33:
+            key = 'PGUP';
+            break;
+          case 34:
+            key = 'PGDN';
+            break;
+          case 35:
+            key = 'END';
+            break;
+          case 36:
+            key = 'HOME';
+            break;
+          case 37:
+            key = 'LEFT';
+            break;
+          case 38:
+            key = 'UP';
+            break;
+          case 39:
+            key = 'RIGHT';
+            break;
+          case 40:
+            key = 'DOWN';
+            break;
+        }
+      }
+
       //caps = ( ( ( keyCode >= 65 && keyCode <= 90 ) && !shiftKey ) || ( ( keyCode >= 97 && keyCode <= 122 ) && shiftKey ) );
-      prompt( shiftKey, ctrlKey, keyCode);
+
+      prompt(key);
+
+      console.log('KBD KEY: '+key );
+      keycodeD = keycodeP = false;
       e.preventDefault();
       return false;
-    });;
+    });
 
   $('#container')
     .on('touchstart mousedown',function(e){
@@ -190,6 +246,11 @@ $(document).ready(function () {
     })
     .on('touchend mouseup',function(e){
       touched=false;
+      console.log('LIFT!');
+      console.log(e.target.id);
+      if(e.target.id=='video1'){
+        $('#'+e.target.id).trigger('snapshot');
+      };
       $('#kbd td').removeClass('dn');
     })
     .on('touchmove mousemove',function(e){
@@ -236,9 +297,6 @@ $(document).ready(function () {
         if(dy<0){
           var kh = $kbd.height()-$('tr.title',$kbd).height();
           $kbd.css('bottom','-'+kh+'px').addClass('off');
-          //kbd_position = $('#kbd').position();
-          //console.log(kbd_position);
-          //$('#out').css('max-height',(kbd_offset.top-75));
         }
         dx = 0;
         dy = 0;
@@ -249,16 +307,32 @@ $(document).ready(function () {
         }
         var c = $k.data('c'),
             t = (!ctrl ? $('span:first', $k).text() : $('span:last', $k).text());
-        if (c === undefined) c = -1;
-        prompt( shift, ctrl, c, t);
+        if (c) {
+          key = c;
+        } else {
+          key = t;
+        }
+        switch(key){
+          case 'CTRL':
+           ctrl = !ctrl;
+           $('#kbd').toggleClass('ctrl');
+           break;
+         case 'CAPS':
+           caps = !caps;
+           $('#kbd').toggleClass('caps');
+           break;
+         case 'SHIFT':
+           shift = !shift;
+           $('#kbd').toggleClass('caps');
+           break;
+        }
+        key = (caps||shift) ? key : key.toLowerCase();
+        //console.log('VRT KEY:'+ key);
+        prompt(key);
+        key = false;
       }
       $('#kbd td').removeClass('dn');
       return false;
     });
-
-//ke = jQuery.Event("keyup");
-//ke.which = 88; // key value of x
-//console.log(ke);
-//$(document).trigger(ke);
 
 });
