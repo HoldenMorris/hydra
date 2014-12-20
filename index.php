@@ -54,8 +54,8 @@ $f3->route('GET /rss/*',
       }
       $items[] = array(
         '_id' => 'item2',
-        'title' => 'title2',
-        'content' => 'content222',
+        'title' => $title,
+        'content' => '',
         'date' => date("D, d M Y H:i:s O")
       );
     }
