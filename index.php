@@ -49,7 +49,7 @@ $f3->route('GET /rss/*',
 
     if($id=='all' || $id=='item2'){
       $lines = array();
-      exec('sudo -u holden -p hotdogflimflam service sickbeard status', $lines, $return_var );
+      exec('sudo -u holden -p hotdogflimflam /etc/init.d/sickbeard status', $lines, $return_var );
       $title = 'Sickbeard Status: ['.$return_var.'] ';
       foreach($lines as $line){
         $title .= ' '.$line;
@@ -61,6 +61,13 @@ $f3->route('GET /rss/*',
         'date' => date("D, d M Y H:i:s O")
       );
     }
+
+    /*
+    mysql start/running,
+    nmbd start/running,
+    smbd start/running,
+
+    */
 
     $f3->set('items', $items);
     echo View::instance()->render('rss_feed.htm', 'application/rss+xml', NULL, 0 );
