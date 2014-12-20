@@ -34,7 +34,7 @@ $f3->route('GET /rss/*',
 
     if($id=='all' || $id=='item1'){
       $lines = array();
-      exec('service transmission-daemon status', $lines, $return_var );
+      exec('sudo service transmission-daemon status', $lines, $return_var );
       $title = 'Transmission Status: ['.$return_var.'] ';
       foreach($lines as $line){
         $title .= ' '.$line;
@@ -49,7 +49,7 @@ $f3->route('GET /rss/*',
 
     if($id=='all' || $id=='item2'){
       $lines = array();
-      exec('sudo -u holden -p hotdogflimflam /etc/init.d/sickbeard status', $lines, $return_var );
+      exec('sudo service sickbeard status', $lines, $return_var );
       $title = 'Sickbeard Status: ['.$return_var.'] ';
       foreach($lines as $line){
         $title .= ' '.$line;
@@ -66,7 +66,6 @@ $f3->route('GET /rss/*',
     mysql start/running,
     nmbd start/running,
     smbd start/running,
-
     */
 
     $f3->set('items', $items);
