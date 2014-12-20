@@ -33,8 +33,9 @@ $f3->route('GET /rss/*',
     $id = isset($args[1])?trim(strtolower($args[1])):'all';
 
     if($id=='all' || $id=='item1'){
+      $lines = array();
       exec('service transmission-daemon status', $lines, $return_var );
-      $title = 'Transmission Status: ';
+      $title = 'Transmission Status: ['.$return_var.'] ';
       foreach($lines as $line){
         $title .= ' '.$line;
       }
@@ -47,8 +48,9 @@ $f3->route('GET /rss/*',
     };
 
     if($id=='all' || $id=='item2'){
+      $lines = array();
       exec('service sickbeard status', $lines, $return_var );
-      $title = 'Sickbeard Status: ';
+      $title = 'Sickbeard Status: ['.$return_var.'] ';
       foreach($lines as $line){
         $title .= ' '.$line;
       }
