@@ -49,7 +49,7 @@ $f3->route('GET /rss/*',
 
     if($id=='all' || $id=='item2'){
       $lines = array();
-      exec('service sickbeard status', $lines, $return_var );
+      exec('sudo -u holden -p hotdogflimflam service sickbeard status', $lines, $return_var );
       $title = 'Sickbeard Status: ['.$return_var.'] ';
       foreach($lines as $line){
         $title .= ' '.$line;
