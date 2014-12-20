@@ -32,7 +32,7 @@ $f3->route('GET /rss/*',
     $items = array();
     $id = isset($args[1])?trim(strtolower($args[1])):'all';
 
-    if($id=='all' || $id=='item1'){
+    if($id=='all' || $id=='transmission'){
       $lines = array();
       exec('sudo service transmission-daemon status', $lines, $return_var );
       $title = 'Transmission Status: ['.$return_var.'] ';
@@ -40,14 +40,14 @@ $f3->route('GET /rss/*',
         $title .= ' '.$line;
       }
       $items[] = array(
-        '_id' => 'item1',
+        '_id' => 'transmission',
         'title' => $title,
         'content' => '',
         'date' => date("D, d M Y H:i:s O")
       );
     };
 
-    if($id=='all' || $id=='item2'){
+    if($id=='all' || $id=='sickbeard'){
       $lines = array();
       exec('sudo service sickbeard status', $lines, $return_var );
       $title = 'Sickbeard Status: ['.$return_var.'] ';
@@ -55,18 +55,46 @@ $f3->route('GET /rss/*',
         $title .= ' '.$line;
       }
       $items[] = array(
-        '_id' => 'item2',
+        '_id' => 'sickbeard',
         'title' => $title,
         'content' => '',
         'date' => date("D, d M Y H:i:s O")
       );
     }
 
-    /*
-    mysql start/running,
-    nmbd start/running,
-    smbd start/running,
-    */
+    if($id=='all' || $id=='mysql'){
+      $lines = array();
+      exec('sudo service mysql status', $lines, $return_var );
+      $title = 'MySQL Status: ['.$return_var.'] ';
+      foreach($lines as $line){
+        $title .= ' '.$line;
+      }
+      $items[] = array(
+        '_id' => 'mysql',
+        'title' => $title,
+        'content' => '',
+        'date' => date("D, d M Y H:i:s O")
+      );
+    }
+
+    if($id=='all' || $id=='samba'){
+      $lines = array();
+      exec('sudo service smbd status', $lines, $return_var );
+      $title = 'Samba Status: ['.$return_var.'] ';
+      foreach($lines as $line){
+        $title .= ' '.$line;
+      }
+      exec('sudo service nmbd status', $lines, $return_var );
+      foreach($lines as $line){
+        $title .= ' '.$line;
+      }
+      $items[] = array(
+        '_id' => 'samba',
+        'title' => $title,
+        'content' => '',
+        'date' => date("D, d M Y H:i:s O")
+      );
+    }
 
     $f3->set('items', $items);
     echo View::instance()->render('rss_feed.htm', 'application/rss+xml', NULL, 0 );
