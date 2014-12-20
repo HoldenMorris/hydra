@@ -22,14 +22,43 @@ $f3->route('GET /',
 
 $f3->route('GET /rss',
   function ($f3) {
-    $items = array(
-      array(
+    $f3->reroute('/rss/all');
+  }
+);
+
+$f3->route('GET /rss/*',
+  function ($f3, $args) {
+
+    $items = array();
+    $id = isset($args[1])?trim(strtolower($args[1])):'all';
+
+    if($id=='all' || $id=='item1'){
+      $items[] = array(
         '_id' => 'item1',
         'title' => 'title1',
-        'content' => 'content123',
+        'content' => 'content111',
         'date' => date("D, d M Y H:i:s O")
-      )
-    );
+      );
+    };
+
+    if($id=='all' || $id=='item2'){
+      $items[] = array(
+        '_id' => 'item2',
+        'title' => 'title2',
+        'content' => 'content222',
+        'date' => date("D, d M Y H:i:s O")
+      );
+    }
+
+    if($id=='all' || $id=='item3'){
+      $items[] = array(
+        '_id' => 'item3',
+        'title' => 'title3',
+        'content' => 'content333',
+        'date' => date("D, d M Y H:i:s O")
+      );
+    }
+
     $f3->set('items', $items);
     echo View::instance()->render('rss_feed.htm', 'application/rss+xml', NULL, 0 );
   }

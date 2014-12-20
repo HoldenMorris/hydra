@@ -3,7 +3,7 @@
 <head>
 
   <title>HYDRA</title>
-  <base href="<?php echo Base::instance()->get('REALM'); ?>" />
+  <base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
   <meta charset="<?php echo $ENCODING; ?>" />
   <meta name="description" content="A new user interface for all." />
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
