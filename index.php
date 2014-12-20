@@ -35,7 +35,7 @@ $f3->route('GET /rss/*',
     if($id=='all' || $id=='transmission'){
       $lines = array();
       exec('sudo service transmission-daemon status', $lines, $return_var );
-      $title = 'Transmission Status: ';
+      $title = 'Transmission: ';
       if($return_var==0 && stripos(implode(' ',$lines),'running')!==false){
         $title .= 'OK';
       } else {
@@ -52,9 +52,11 @@ $f3->route('GET /rss/*',
     if($id=='all' || $id=='sickbeard'){
       $lines = array();
       exec('sudo service sickbeard status', $lines, $return_var );
-      $title = 'Sickbeard Status: ['.$return_var.'] ';
-      foreach($lines as $line){
-        $title .= ' '.$line;
+      $title = 'Sickbeard: ';
+      if($return_var==0 && stripos(implode(' ',$lines),'running')!==false){
+        $title .= 'OK';
+      } else {
+        $title .= 'ERROR ['.$return_var.']';
       }
       $items[] = array(
         '_id' => 'sickbeard',
@@ -67,9 +69,11 @@ $f3->route('GET /rss/*',
     if($id=='all' || $id=='mysql'){
       $lines = array();
       exec('sudo service mysql status', $lines, $return_var );
-      $title = 'MySQL Status: ['.$return_var.'] ';
-      foreach($lines as $line){
-        $title .= ' '.$line;
+      $title = 'MySQL ';
+      if($return_var==0 && stripos(implode(' ',$lines),'running')!==false){
+        $title .= 'OK';
+      } else {
+        $title .= 'ERROR ['.$return_var.']';
       }
       $items[] = array(
         '_id' => 'mysql',
@@ -82,13 +86,17 @@ $f3->route('GET /rss/*',
     if($id=='all' || $id=='samba'){
       $lines = array();
       exec('sudo service smbd status', $lines, $return_var );
-      $title = 'Samba Status: ['.$return_var.'] ';
-      foreach($lines as $line){
-        $title .= ' '.$line;
+      $title = 'Samba: ';
+      if($return_var==0 && stripos(implode(' ',$lines),'running')!==false){
+        $title .= ' SMDB OK';
+      } else {
+        $title .= 'SMDB ERROR ['.$return_var.']';
       }
       exec('sudo service nmbd status', $lines, $return_var );
-      foreach($lines as $line){
-        $title .= ' '.$line;
+      if($return_var==0 && stripos(implode(' ',$lines),'running')!==false){
+        $title .= 'NMDB OK';
+      } else {
+        $title .= 'NMDB ERROR ['.$return_var.']';
       }
       $items[] = array(
         '_id' => 'samba',
