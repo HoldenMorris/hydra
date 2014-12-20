@@ -33,28 +33,29 @@ $f3->route('GET /rss/*',
     $id = isset($args[1])?trim(strtolower($args[1])):'all';
 
     if($id=='all' || $id=='item1'){
+      exec('service transmission-daemon status', $lines, $return_var );
+      $title = 'Transmission Status: ';
+      foreach($lines as $line){
+        $title .= ' '.$line;
+      }
       $items[] = array(
         '_id' => 'item1',
-        'title' => 'title1',
-        'content' => 'content111',
+        'title' => $title,
+        'content' => '',
         'date' => date("D, d M Y H:i:s O")
       );
     };
 
     if($id=='all' || $id=='item2'){
+      exec('service sickbeard status', $lines, $return_var );
+      $title = 'Sickbeard Status: ';
+      foreach($lines as $line){
+        $title .= ' '.$line;
+      }
       $items[] = array(
         '_id' => 'item2',
         'title' => 'title2',
         'content' => 'content222',
-        'date' => date("D, d M Y H:i:s O")
-      );
-    }
-
-    if($id=='all' || $id=='item3'){
-      $items[] = array(
-        '_id' => 'item3',
-        'title' => 'title3',
-        'content' => 'content333',
         'date' => date("D, d M Y H:i:s O")
       );
     }
