@@ -1,19 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/ui/css/rss2full.xsl'?>"?>
+<?xml-stylesheet type="text/css" media="screen" href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/ui/css/rssitemcontent.css'?>"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
     <title>Hydra Feed</title>
     <link><?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/rss/all' ?></link>
-    <description></description>
+    <description>Latest Hydra System Status</description>
     <lastBuildDate><?php echo Base::instance()->get('last_update'); ?></lastBuildDate>
     <language><?php echo Base::instance()->get('LANGUAGE'); ?></language>
-    <atom:link href="<?php echo Base::instance()->get('REALM'); ?>" rel="self" type="application/rss+xml" />
     <?php foreach( Base::instance()->get('items') as $item): ?>
     <item>
         <title><?php echo $item['title']; ?></title>
         <pubDate><?php echo $item['date']; ?></pubDate>
         <link><?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/rss/'.$item['_id']; ?></link>
-        <guid><?php echo $item['_id']; ?></guid>
-        <description><![CDATA[ <?php echo substr(strip_tags($item['content']),0,256) ?> ]]></description>
+        <guid isPermaLink="false"><?php echo $item['_id']; ?></guid>
+        <description><?php echo substr(strip_tags($item['content']),0,256) ?></description>
     </item>
     <?php endforeach; ?>
 </channel>
