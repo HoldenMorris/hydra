@@ -17,7 +17,21 @@ $f3->route('GET /',
     $f3->set('content', 'content.htm');
     $f3->set('kbd', 'kbd.htm');
     echo View::instance()->render('layout.htm');
+  }
+);
 
+$f3->route('GET /rss',
+  function ($f3) {
+    $items = array(
+      array(
+        '_id' => 'item1',
+        'title' => 'title1',
+        'content' => 'content123',
+        'date' => date("D, d M Y H:i:s O")
+      )
+    );
+    $f3->set('items', $items);
+    echo View::instance()->render('rss_feed.htm', 'application/rss+xml', NULL, 0 );
   }
 );
 

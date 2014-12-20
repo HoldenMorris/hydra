@@ -83,8 +83,24 @@ $(document).ready(function () {
                 $("#snap1").show();
                 var localMediaStream = null;
                 if (navigator.getUserMedia) {
+                  var constraints = {
+                    audio: false,
+                    video: {
+  //                      mandatory: {
+  //                        width: { min: 640 },
+  //                        height: { min: 480 }
+  //                      },
+                      optional: [
+                        { width: 650 },
+                        { width: { min: 650 }},
+                        { frameRate: 60 },
+                        { width: { max: 800 }},
+                        { facingMode: "user" }
+                      ]
+                    }
+                   };
                   navigator.getUserMedia(
-                    {audio: false, video: true},
+                    constraints,
                     function(stream) {
                       video.src = window.URL.createObjectURL(stream);
                       localMediaStream = stream;
@@ -106,6 +122,12 @@ $(document).ready(function () {
                           //console.log(tmp);
                           $('#snap1').attr('src',tmp);
                         }
+                      });
+                      video.addEventListener("playing", function () {
+                          setTimeout(function () {
+                              console.log("Stream dimensions: " + video.videoWidth + "x" + video.videoHeight);
+                              console.log($(video));
+                          }, 500);
                       });
                     },
                     function(error){
