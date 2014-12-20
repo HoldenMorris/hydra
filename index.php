@@ -35,9 +35,11 @@ $f3->route('GET /rss/*',
     if($id=='all' || $id=='transmission'){
       $lines = array();
       exec('sudo service transmission-daemon status', $lines, $return_var );
-      $title = 'Transmission Status: ['.$return_var.'] ';
-      foreach($lines as $line){
-        $title .= ' '.$line;
+      $title = 'Transmission Status: ';
+      if($return_var==0 && stripos(implode(' ',$lines),'running')!==false){
+        $title .= 'OK';
+      } else {
+        $title .= 'ERROR ['.$return_var.']';
       }
       $items[] = array(
         '_id' => 'transmission',
