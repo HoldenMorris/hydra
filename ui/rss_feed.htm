@@ -1,21 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" media="screen" href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/ui/css/rss2full.xsl'?>"?>
-<?xml-stylesheet type="text/css" media="screen" href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/ui/css/rssitemcontent.css'?>"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-<channel>
-    <title>Hydra Feed</title>
-    <link><?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/rss/all' ?></link>
-    <description>Latest Hydra System Status</description>
-    <lastBuildDate><?php echo Base::instance()->get('last_update'); ?></lastBuildDate>
-    <language><?php echo Base::instance()->get('LANGUAGE'); ?></language>
-    <?php foreach( Base::instance()->get('items') as $item): ?>
-    <item>
-        <title><?php echo $item['title']; ?></title>
-        <pubDate><?php echo $item['date']; ?></pubDate>
-        <link><?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/rss/'.$item['_id']; ?></link>
-        <guid isPermaLink="false"><?php echo $item['_id']; ?></guid>
-        <description><?php echo substr(strip_tags($item['content']),0,256) ?></description>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.xbmc.org/~d/styles/itemcontent.css"?>
+<rss xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+  <channel><title>Latest XBMC Add-Ons</title>
+    <link>
+    http://addons.xbmc.org/</link>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml"
+                 href="http://feeds.xbmc.org/latest_xbmc_addons"/>
+    <description>Latest XBMC Add-Ons</description>
+    <language>en-us</language>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml"
+                 href="http://feeds.xbmc.org/latest_xbmc_addons"/>
+    <feedburner:info uri="latest_xbmc_addons"/>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/"/>
+    <item><title>D17</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/FiE3DwCS_1o/plugin.video.d17</link>
+      <guid isPermaLink="false">plugin.video.d17</guid>
+      <description>Addon to watch videos from french tv channel D17&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/FiE3DwCS_1o" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/a30bc146cd19242eea512e86206324_addon-dummy.png"
+                 length="1554" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/plugin.video.d17</feedburner:origLink>
     </item>
-    <?php endforeach; ?>
-</channel>
+    <item><title>D8</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/mmN95qBSI7U/plugin.video.d8</link>
+      <guid isPermaLink="false">plugin.video.d8</guid>
+      <description>Addon to watch videos from french tv channel D8&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/mmN95qBSI7U" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/a30bc146cd19242eea512e86206324_addon-dummy.png"
+                 length="1554" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/plugin.video.d8</feedburner:origLink>
+    </item>
+    <item><title>VideoScreensaver</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/E-Z-ltcOOIs/screensaver.video</link>
+      <guid isPermaLink="false">screensaver.video</guid>
+      <description>Plays a video when the screensaver starts, this can be a custom video or one of the built in videos&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/E-Z-ltcOOIs" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/3e67f2b2c4a69cefa51b908986e650_icon.png"
+                 length="4042" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/screensaver.video</feedburner:origLink>
+    </item>
+    <item><title>sg!Radio</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/mMU6EE1-64w/plugin.audio.sgradio</link>
+      <guid isPermaLink="false">plugin.audio.sgradio</guid>
+      <description>Listen Online to Singapore Radio Channels. Class 95, Kiss 92, FM 987, Yes 933, Warna, Ria, and more.&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/mMU6EE1-64w" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/b2b0530afe5b021c613cd4cf58c258_icon.png"
+                 length="3536" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/plugin.audio.sgradio</feedburner:origLink>
+    </item>
+    <item><title>pyyaml</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/-HY02vfQFRA/script.module.yaml</link>
+      <guid isPermaLink="false">script.module.yaml</guid>
+      <description>A packaged version of files needed for the pyyamml library.&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/-HY02vfQFRA" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/c3fd179dff79eefa9430d88919f0f7_icon.png"
+                 length="2635" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/script.module.yaml</feedburner:origLink>
+    </item>
+    <item><title>uritemplate</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/MoWoe2VWWYg/script.module.uritemplate</link>
+      <guid isPermaLink="false">script.module.uritemplate</guid>
+      <description>A packaged version of the uritemplates python module.&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/MoWoe2VWWYg" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/60024145dab43de666e9f30e057d78_icon.png"
+                 length="2096" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/script.module.uritemplate</feedburner:origLink>
+    </item>
+    <item><title>googleapi</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/ux9DTUH7o1c/script.module.googleapi</link>
+      <guid isPermaLink="false">script.module.googleapi</guid>
+      <description>A packaged version of all the libraries needed for Google API access via python.&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/ux9DTUH7o1c" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/a30bc146cd19242eea512e86206324_addon-dummy.png"
+                 length="1554" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/script.module.googleapi</feedburner:origLink>
+    </item>
+    <item><title>oauth2client</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/Gt9SuScVAhU/script.module.oauth2client</link>
+      <guid isPermaLink="false">script.module.oauth2client</guid>
+      <description>A packaged version of the libraries needed for Google Oauth2 Client access to their API via python.&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/Gt9SuScVAhU" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/965f258922099b177f06f114b64fa8_icon.png"
+                 length="2096" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/script.module.oauth2client</feedburner:origLink>
+    </item>
+    <item><title>Hong Kong Radio</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/MMohw6kb2CQ/plugin.audio.hongkongradio</link>
+      <guid isPermaLink="false">plugin.audio.hongkongradio</guid>
+      <description>Hong Kong Radio, including channels from RTHK and Commercial Radio&lt;img
+        src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/MMohw6kb2CQ" height="1" width="1" alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/f681cb42585e2b99cd8725243fc7bb_icon.png"
+                 length="4372" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/plugin.audio.hongkongradio</feedburner:origLink>
+    </item>
+    <item><title>Zattoo Box</title>
+      <link>
+      http://feeds.xbmc.org/~r/latest_xbmc_addons/~3/_j-7TmBnAIs/plugin.video.zattoobox</link>
+      <guid isPermaLink="false">plugin.video.zattoobox</guid>
+      <description>Play Live TV and recorded programs from a Zattoo account.
+        - Watch live TV from any available channel
+        - Favorites filter for convenient access
+        - Recordings available for instant watching
+        - Quick setup&lt;img src="//feeds.feedburner.com/~r/latest_xbmc_addons/~4/_j-7TmBnAIs" height="1" width="1"
+        alt=""/&gt;</description>
+      <enclosure url="http://addons.xbmc.org/addon-data/cache/images/5accbc31b811484ee1c8f27c3a21e2_icon.png"
+                 length="2085" type="image/png"/>
+      <feedburner:origLink>http://addons.xbmc.org/plugin.video.zattoobox</feedburner:origLink>
+    </item>
+  </channel>
 </rss>
